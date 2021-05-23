@@ -1,9 +1,4 @@
-# Ultroid - UserBot
-# Copyright (C) 2020 TeamUltroid
-#
-# This file is a part of < https://github.com/TeamUltroid/Ultroid/ >
-# PLease read the GNU Affero General Public License in
-# <https://www.github.com/TeamUltroid/Ultroid/blob/main/LICENSE/>.
+
 
 import re
 import time
@@ -22,7 +17,7 @@ from . import *
 
 # ================================================#
 notmine = f"This bot is for {OWNER_NAME}"
-ULTROID_PIC = "https://telegra.ph/file/115f149ed8e154641708b.jpg"
+ASTEROID_PIC = "https://telegra.ph/file/c8335970dfca6dfb4e8d6.jpg"
 helps = get_string("inline_1")
 
 add_ons = udB.get("ADDONS")
@@ -56,23 +51,23 @@ async def e(o):
         )
         res = [
             await b.article(
-                title="Ultroid Userbot",
-                url="https://t.me/TeamUltroid",
+                title="Asteroid Userbot",
+                url="https://t.me/TeamAsteroid",
                 description="Userbot | Telethon ",
                 text=ALIVEMSG,
                 thumb=InputWebDocument(ULTROID_PIC, 0, "image/jpeg", []),
                 buttons=[
-                    [Button.url(text="Support Group", url="t.me/UltroidSupport")],
+                    [Button.url(text="Support Group", url="t.me/https://t.me/Asteriod_support")],
                     [
                         Button.url(
                             text="Repo",
-                            url="https://github.com/Teamultroid/Ultroid",
+                            url="https://github.com/TEAMROYAL/Asteroid",
                         ),
                     ],
                 ],
             ),
         ]
-        await o.answer(res, switch_pm=f"👥 ULTROID PORTAL", switch_pm_param="start")
+        await o.answer(res, switch_pm=f"👥 ASTEROID PORTAL", switch_pm_param="start")
 
 
 @in_pattern("ultd")
@@ -174,18 +169,18 @@ async def _(event):
     changelog_str = changelog + f"\n\nClick the below button to update!"
     if len(changelog_str) > 1024:
         await event.edit(get_string("upd_4"))
-        file = open(f"ultroid_updates.txt", "w+")
+        file = open(f"asteroid_updates.txt", "w+")
         file.write(tl_chnglog)
         file.close()
         await event.edit(
             get_string("upd_5"),
-            file="ultroid_updates.txt",
+            file="asteroid_updates.txt",
             buttons=[
                 [Button.inline("• Uᴘᴅᴀᴛᴇ Nᴏᴡ •", data="updatenow")],
                 [Button.inline("« Bᴀᴄᴋ", data="ownr")],
             ],
         )
-        remove(f"ultroid_updates.txt")
+        remove(f"asteroid_updates.txt")
         return
     else:
         await event.edit(
@@ -238,7 +233,7 @@ async def _(e):
             ),
             Button.switch_inline(
                 "Sᴇᴀʀᴄʜ Oɴ Yᴀʜᴏᴏ",
-                query="yahoo TeamUltroid",
+                query="yahoo TEAMROYAL",
                 same_peer=True,
             ),
         ],
@@ -397,7 +392,7 @@ async def opner(event):
         [
             Button.url(
                 "⚙️Sᴇᴛᴛɪɴɢs⚙️",
-                url=f"https://t.me/{bnn}?start={ultroid_bot.me.id}",
+                url=f"https://t.me/{bnn}?start={Asteriod_bot.me.id}",
             ),
         ],
         [Button.inline("••Cʟᴏꜱᴇ••", data="close")],
@@ -447,7 +442,7 @@ async def on_plug_in_callback_query_handler(event):
         reply_pop_up_alert = f"{plugin_name} has no detailed help..."
     else:
         reply_pop_up_alert = help_string
-    reply_pop_up_alert += "\n© @TeamUltroid"
+    reply_pop_up_alert += "\n© @TeamAsteroid"
     buttons = [
         [
             Button.inline(
@@ -506,7 +501,7 @@ async def on_plug_in_callback_query_handler(event):
         reply_pop_up_alert = f"{plugin_name} has no detailed help..."
     else:
         reply_pop_up_alert = help_string
-    reply_pop_up_alert += "\n© @TeamUltroid"
+    reply_pop_up_alert += "\n© @TeamAsteroid"
     buttons = [
         [
             Button.inline(
