@@ -1,8 +1,8 @@
 .env
 venv/
 __pycache__
-ultroid.session-journal
-ultroid.session
+Asteroid.session-journal
+Asteroid.session
 *.mp3
 *.webm
 *.webp
@@ -13,7 +13,7 @@ ultroid.session
 /*.png
 /*.mp4
 addons/
-ultroid.log
+Asteroid.log
 target/npmlist.json
 node_modules/
 glitch_me/
