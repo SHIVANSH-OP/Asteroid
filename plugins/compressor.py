@@ -1,9 +1,3 @@
-# Ultroid - UserBot
-# Copyright (C) 2020 TeamUltroid
-#
-# This file is a part of < https://github.com/TeamUltroid/Ultroid/ >
-# PLease read the GNU Affero General Public License in
-# <https://www.github.com/TeamUltroid/Ultroid/blob/main/LICENSE/>.
 
 """
 ✘ Commands Available -
@@ -32,7 +26,7 @@ from telethon.tl.types import DocumentAttributeVideo
 from . import *
 
 
-@ultroid_cmd(pattern="compress ?((\\d+)(.*)|$)")
+@Asteroid_cmd(pattern="compress ?((\\d+)(.*)|$)")
 async def _(e):
     crf = e.pattern_match.group(1)
     if not crf:
@@ -131,7 +125,7 @@ async def _(e):
                 await e.client.send_file(
                     e.chat_id,
                     mmmm,
-                    thumb="resources/extras/ultroid.jpg",
+                    thumb="resources/extras/cee415d7720336ea1121debd2cddcbd1.png",
                     caption=caption,
                     attributes=attributes,
                     force_document=False,
@@ -141,7 +135,7 @@ async def _(e):
                 await e.client.send_file(
                     e.chat_id,
                     mmmm,
-                    thumb="resources/extras/ultroid.jpg",
+                    thumb="resources/extras/cee415d7720336ea1121debd2cddcbd1.png",
                     caption=caption,
                     force_document=True,
                     reply_to=e.reply_to_msg_id,
