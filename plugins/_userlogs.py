@@ -1,9 +1,4 @@
-# Ultroid - UserBot
-# Copyright (C) 2020 TeamUltroid
-#
-# This file is a part of < https://github.com/TeamUltroid/Ultroid/ >
-# PLease read the GNU Affero General Public License in
-# <https://www.github.com/TeamUltroid/Ultroid/blob/main/LICENSE/>.
+
 
 import re
 
@@ -19,7 +14,7 @@ from . import *
 # taglogger
 
 
-@ultroid_bot.on(
+@Asteriod_bot.on(
     events.NewMessage(
         incoming=True,
         func=lambda e: (e.mentioned),
@@ -38,7 +33,7 @@ async def all_messages_catcher(e):
         where_n = get_display_name(y)
         who_n = get_display_name(x)
         where_l = f"https://t.me/c/{y.id}/{e.id}"
-        send = await ultroid_bot.get_messages(e.chat_id, ids=e.id)
+        send = await Asteriod_bot.get_messages(e.chat_id, ids=e.id)
         try:
             if x.username:
                 who_l = f"https://t.me/{x.username}"
@@ -80,12 +75,12 @@ async def all_messages_catcher(e):
                     ],
                 )
         except PeerIdInvalidError:
-            await ultroid_bot.send_message(
+            await Asteriod_bot.send_message(
                 int(udB.get("LOG_CHANNEL")),
                 "The Chat Id You Set In Tag Logger Is Wrong , Please Correct It",
             )
         except ChatWriteForbiddenError:
-            await ultroid_bot.send_message(NEEDTOLOG, "Please Give Your Assistant Bot")
+            await Asteriod_bot.send_message(NEEDTOLOG, "Please Give Your Assistant Bot")
         except Exception as er:
             LOGS.info(str(er))
     else:
@@ -121,7 +116,7 @@ async def when_asst_added_to_chat(event):
 # log for user's new joins
 
 
-@ultroid.on(events.ChatAction)
+@Asteroid.on(events.ChatAction)
 async def when_ultd_added_to_chat(event):
     if event.user_added:
         user = await event.get_user()
@@ -159,5 +154,7 @@ async def leave_ch_at(event):
     if client == "bot":
         await asst.delete_dialog(int(ch_id))
     elif client == "user":
-        await ultroid_bot.delete_dialog(int(ch_id))
+        await Asteriod_bot.delete_dialog(int(ch_id))
     await event.edit(f"Left `{name}`")
+
+#shivash 
