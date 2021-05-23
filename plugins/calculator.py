@@ -1,9 +1,3 @@
-# Ultroid - UserBot
-# Copyright (C) 2020 TeamUltroid
-#
-# This file is a part of < https://github.com/TeamUltroid/Ultroid/ >
-# PLease read the GNU Affero General Public License in
-# <https://www.github.com/TeamUltroid/Ultroid/blob/main/LICENSE/>.
 
 """
 ✘ Commands Available -
@@ -17,7 +11,7 @@ import re
 from . import *
 
 
-@ultroid_cmd(pattern="calc")
+@Asteriod_cmd(pattern="calc")
 async def icalc(e):
     udB.delete("calc")
     results = await ultroid_bot.inline_query(asst.me.username, "calc")
@@ -64,7 +58,7 @@ async def _(e):
     if x == "AC":
         udB.delete("calc")
         return await e.edit(
-            "• Ultroid Inline Calculator •",
+            "• Asteroid Inline Calculator •",
             buttons=[Button.inline("Open Calculator Again", data="recalc")],
         )
     elif x == "C":
