@@ -14,8 +14,8 @@
 - [Heroku](#Deploy-to-Heroku)
 - [Local Machine](#Deploy-Locally)
 
-# Documentation 
-[![Document](https://img.shields.io/badge/Documentation-ASTEROID-red)](http://ultroid.tech/)
+# TEAM
+[![TEAM](https://img.shields.io/badge/TEAMROYAL-ASTEROID-green)](https://t.me/Team_royal_support)
 
 # Tutorial 
 - Full Tutorial - [![Full Tutorial](https://img.shields.io/badge/Watch%20Now-blue)](https://www.youtube.com/watch?v=9wF7k9qA0Q4)
