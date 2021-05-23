@@ -1,9 +1,4 @@
-# Ultroid - UserBot
-# Copyright (C) 2020 TeamUltroid
-#
-# This file is a part of < https://github.com/TeamUltroid/Ultroid/ >
-# PLease read the GNU Affero General Public License in
-# <https://www.github.com/TeamUltroid/Ultroid/blob/main/LICENSE/>.
+
 
 """
 ✘ Commands Available -
@@ -43,28 +38,28 @@ from . import *
 opn = []
 
 
-@ultroid_cmd(pattern="thumbnail$")
+@Asteroid_cmd(pattern="thumbnail$")
 async def _(e):
     r = await e.get_reply_message()
     pop = "`Reply to img or file with thumbnail.`"
     if not r:
         return await eor(e, pop)
     if isinstance(r.media, photu):
-        dl = await ultroid_bot.download_media(r.media)
+        dl = await Asteroid_bot.download_media(r.media)
     elif isinstance(r.media, doc):
         if r.media.document.thumbs:
-            dl = await ultroid_bot.download_media(r, thumb=-1)
+            dl = await Asteroid_bot.download_media(r, thumb=-1)
         else:
             return await eor(e, pop)
     variable = uf(dl)
     os.remove(dl)
     nn = "https://telegra.ph" + variable[0]
     udB.set("CUSTOM_THUMBNAIL", str(nn))
-    await bash(f"wget {nn} -O resources/extras/ultroid.jpg")
+    await bash(f"wget {nn} -O resources/extras/cee415d7720336ea1121debd2cddcbd1.png")
     await eor(e, f"Added [This]({nn}) As Your Custom Thumbnail", link_preview=False)
 
 
-@ultroid_cmd(pattern="rename ?(.*)")
+@Asteroid_cmd(pattern="rename ?(.*)")
 async def imak(event):
     reply = await event.get_reply_message()
     t = time.time()
@@ -100,14 +95,14 @@ async def imak(event):
     await xx.delete()
 
 
-@ultroid_cmd(pattern="mtoi$")
+@Asteroid_cmd(pattern="mtoi$")
 async def imak(event):
     reply = await event.get_reply_message()
     if not (reply and (reply.media)):
         await eor(event, "Reply to any media.")
         return
     xx = await eor(event, "`Processing...`")
-    image = await ultroid_bot.download_media(reply)
+    image = await Asteroid_bot.download_media(reply)
     file = "ult.png"
     if image.endswith((".webp", ".png")):
         c = Image.open(image)
@@ -116,20 +111,20 @@ async def imak(event):
         img = cv2.VideoCapture(image)
         ult, roid = img.read()
         cv2.imwrite(file, roid)
-    await ultroid_bot.send_file(event.chat_id, file, reply_to=reply)
+    await Asteroid_bot.send_file(event.chat_id, file, reply_to=reply)
     await xx.delete()
     os.remove(file)
     os.remove(image)
 
 
-@ultroid_cmd(pattern="mtos$")
+@Asteroid_cmd(pattern="mtos$")
 async def smak(event):
     reply = await event.get_reply_message()
     if not (reply and (reply.media)):
         await eor(event, "Reply to any media.")
         return
     xx = await eor(event, "`Processing...`")
-    image = await ultroid_bot.download_media(reply)
+    image = await Asteroid_bot.download_media(reply)
     file = "ult.webp"
     if image.endswith((".webp", ".png", ".jpg")):
         c = Image.open(image)
@@ -138,13 +133,13 @@ async def smak(event):
         img = cv2.VideoCapture(image)
         ult, roid = img.read()
         cv2.imwrite(file, roid)
-    await ultroid_bot.send_file(event.chat_id, file, reply_to=reply)
+    await Asteroid_bot.send_file(event.chat_id, file, reply_to=reply)
     await xx.delete()
     os.remove(file)
     os.remove(image)
 
 
-@ultroid_cmd(
+@Asteroid_cmd(
     pattern="doc",
 )
 async def _(event):
@@ -166,7 +161,7 @@ async def _(event):
             os.remove(input_str)
 
 
-@ultroid_cmd(
+@Asteroid_cmd(
     pattern="open$",
 )
 async def _(event):
