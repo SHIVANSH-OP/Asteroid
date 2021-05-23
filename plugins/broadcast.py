@@ -1,9 +1,4 @@
-# Ultroid - UserBot
-# Copyright (C) 2020 TeamUltroid
-#
-# This file is a part of < https://github.com/TeamUltroid/Ultroid/ >
-# PLease read the GNU Affero General Public License in
-# <https://www.github.com/TeamUltroid/Ultroid/blob/main/LICENSE/>.
+
 
 """
 ✘ Commands Available
@@ -30,7 +25,7 @@ import io
 from . import *
 
 
-@ultroid_cmd(
+@Asteriod_cmd(
     pattern="addch ?(.*)",
     allow_sudo=False,
 )
@@ -42,7 +37,7 @@ async def broadcast_adder(event):
         await x.edit(get_string("bd_2"))
         chats = [
             e.entity
-            for e in await ultroid.get_dialogs()
+            for e in await Asteroid.get_dialogs()
             if (e.is_group or e.is_channel)
         ]
         for i in chats:
@@ -92,7 +87,7 @@ async def broadcast_adder(event):
         await event.delete()
 
 
-@ultroid_cmd(
+@Asteriod_cmd(
     pattern="remch ?(.*)",
     allow_sudo=False,
 )
@@ -120,7 +115,7 @@ async def broadcast_remover(event):
         await x.delete()
 
 
-@ultroid_cmd(
+@Asteriod_cmd(
     pattern="listchannels$",
 )
 async def list_all(event):
@@ -133,7 +128,7 @@ async def list_all(event):
     for channel in channels:
         name = ""
         try:
-            name = (await ultroid.get_entity(int(channel))).title
+            name = (await Asteroid.get_entity(int(channel))).title
         except BaseException:
             name = ""
         msg += f"=> **{name}** [`{channel}`]\n"
@@ -142,7 +137,7 @@ async def list_all(event):
         MSG = msg.replace("*", "").replace("`", "")
         with io.BytesIO(str.encode(MSG)) as out_file:
             out_file.name = "channels.txt"
-            await ultroid_bot.send_file(
+            await Asteroid_bot.send_file(
                 event.chat_id,
                 out_file,
                 force_document=True,
@@ -155,7 +150,7 @@ async def list_all(event):
         await x.edit(msg)
 
 
-@ultroid_cmd(
+@Asteriod_cmd(
     pattern="forward$",
     allow_sudo=False,
 )
@@ -174,14 +169,14 @@ async def forw(event):
     error_count = 0
     for channel in channels:
         try:
-            await ultroid_bot.forward_messages(int(channel), previous_message)
+            await Asteroid_bot.forward_messages(int(channel), previous_message)
             sent_count += 1
             await x.edit(
                 f"Sent : {sent_count}\nError : {error_count}\nTotal : {len(channels)}",
             )
         except Exception:
             try:
-                await ultroid_bot.send_message(
+                await Asteroid_bot.send_message(
                     int(udB.get("LOG_CHANNEL")),
                     f"Error in sending at {channel}.",
                 )
@@ -194,14 +189,14 @@ async def forw(event):
     await x.edit(f"{sent_count} messages sent with {error_count} errors.")
     if error_count > 0:
         try:
-            await ultroid_bot.send_message(
+            await Asteroid_bot.send_message(
                 int(udB.get("LOG_CHANNEL")), f"{error_count} Errors"
             )
         except BaseException:
             await x.edit("Set up log channel for checking errors.")
 
 
-@ultroid_cmd(
+@Asteriod_cmd(
     pattern="broadcast ?(.*)",
     allow_sudo=False,
 )
