@@ -8,7 +8,7 @@ iv) Now Check Your Email, and click the "Activate Now" sent by redislabs via ema
 v) Now Login and Chose Free Plan in "Fixed Size" Area and Write any name in "Subscription Area".   
 vi) On the Next Page Write Database Name and click Activate.   
    
- Congo! Your DB has been created 🥳   
+ Congo! Your DB has been created 🥳  
    
 Process For Getting DB Credentials:-   
 i.) Wait 5 mins after DB creation.   
