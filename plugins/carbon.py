@@ -1,9 +1,4 @@
-# Ultroid - UserBot
-# Copyright (C) 2020 TeamUltroid
-#
-# This file is a part of < https://github.com/TeamUltroid/Ultroid/ >
-# PLease read the GNU Affero General Public License in
-# <https://www.github.com/TeamUltroid/Ultroid/blob/main/LICENSE/>.
+
 
 """
 ✘ Commands Available -
@@ -173,7 +168,7 @@ all_col = [
 ]
 
 
-@ultroid_cmd(
+@Asteriod_cmd(
     pattern="carbon",
 )
 async def crbn(event):
@@ -193,7 +188,7 @@ async def crbn(event):
     carbon = Carbon(code=code)
     xx = await carbon.save("ultroid_carbon")
     await xxxx.delete()
-    await ultroid_bot.send_file(
+    await Asteroid_bot.send_file(
         event.chat_id,
         xx,
         caption=f"Carbonised by [{OWNER_NAME}](tg://user?id={OWNER_ID})",
@@ -202,7 +197,7 @@ async def crbn(event):
     os.remove(xx)
 
 
-@ultroid_cmd(
+@Asteriod_cmd(
     pattern="rcarbon",
 )
 async def crbn(event):
@@ -210,7 +205,7 @@ async def crbn(event):
     if event.reply_to_msg_id:
         temp = await event.get_reply_message()
         if temp.media:
-            b = await ultroid_bot.download_media(temp)
+            b = await Asteroid_bot.download_media(temp)
             a = open(b)
             code = a.read()
             a.close()
@@ -223,7 +218,7 @@ async def crbn(event):
     carbon = Carbon(code=code, background=col)
     xx = await carbon.save("ultroid_carbon")
     await xxxx.delete()
-    await ultroid_bot.send_file(
+    await Asteroid_bot.send_file(
         event.chat_id,
         xx,
         caption=f"Carbonised by [{OWNER_NAME}](tg://user?id={OWNER_ID})",
