@@ -1,9 +1,4 @@
-# Ultroid - UserBot
-# Copyright (C) 2020 TeamUltroid
-#
-# This file is a part of < https://github.com/TeamUltroid/Ultroid/ >
-# PLease read the GNU Affero General Public License in
-# <https://www.github.com/TeamUltroid/Ultroid/blob/main/LICENSE/>.
+
 
 from support import *
 from telethon.errors.rpcerrorlist import BotInlineDisabledError as dis
@@ -14,7 +9,7 @@ from telethon.tl.custom import Button
 from . import *
 
 
-@ultroid_cmd(
+@Asteriod_cmd(
     pattern="help ?(.*)",
 )
 async def ult(ult):
@@ -26,7 +21,7 @@ async def ult(ult):
                 output = f"**Plugin** - `{plug}`\n"
                 for i in HELP[plug]:
                     output += i
-                output += "\n© @TeamUltroid"
+                output += "\n© @TEAMROYAL"
                 await eor(ult, output)
             elif plug in CMD_HELP:
                 kk = f"Plugin Name-{plug}\n\n✘ Commands Available -\n\n"
@@ -38,7 +33,7 @@ async def ult(ult):
                     for d in LIST[plug]:
                         x += HNDLR + d
                         x += "\n"
-                    x += "\n© @TeamUltroid"
+                    x += "\n© @TEAMROYAL"
                     await eor(ult, x)
                 except BaseException:
                     await eod(ult, get_string("help_1").format(plug), time=5)
@@ -46,14 +41,9 @@ async def ult(ult):
             await eor(ult, "Error 🤔 occured.")
     else:
         # if BOT_MODE:
-        #    await ultroid_bot.send_message(
-        #        ult.chat_id,
-        #        f"Bot of {ultroid_bot.me.first_name}",
-        #        buttons=[Button.inline(text="Open Help", data="open")],
-        #    )
-        #    return
+        
         try:
-            results = await ultroid_bot.inline_query(tgbot, "ultd")
+            results = await Asteriod_bot.inline_query(tgbot, "ultd")
         except BotMethodInvalidError:
             z = []
             for x in LIST.values():
@@ -61,7 +51,7 @@ async def ult(ult):
                     z.append(y)
             cmd = len(z) + 10
             bnn = asst.me.username
-            return await ultroid_bot.send_message(
+            return await Asteriod_bot.send_message(
                 ult.chat_id,
                 get_string("inline_4").format(
                     OWNER_NAME,
