@@ -2,7 +2,7 @@
   <img src="./resources/extras/cee415d7720336ea1121debd2cddcbd1.png" alt="TEAMROYAL Logo">
 </p>
 <h1 align="center">
-  <b>ASTERIOD - USERBOT</b>
+  <b>ASTEROID - USERBOT</b>
 </h1>
 
 <b>A stable pluggable Telegram userbot based on Telethon.</b>   
@@ -15,7 +15,7 @@
 - [Local Machine](#Deploy-Locally)
 
 # Documentation 
-[![Document](https://img.shields.io/badge/Documentation-Ultroid-blue)](http://ultroid.tech/)
+[![Document](https://img.shields.io/badge/Documentation-ASTEROID-red)](http://ultroid.tech/)
 
 # Tutorial 
 - Full Tutorial - [![Full Tutorial](https://img.shields.io/badge/Watch%20Now-blue)](https://www.youtube.com/watch?v=9wF7k9qA0Q4)
