@@ -1,11 +1,11 @@
 <p align="center">
-  <img src="./resources/extras/logo_readme.jpg" alt="TeamUltroid Logo">
+  <img src="./resources/extras/logo_readme.jpg" alt="TEAMROYAL Logo">
 </p>
 <h1 align="center">
-  <b>Ultroid - UserBot</b>
+  <b>ASTERIOD - USERBOT</b>
 </h1>
 
-<b>A stable pluggable Telegram userbot + vc music bot, based on Telethon.</b>   
+<b>A stable pluggable Telegram userbot based on Telethon.</b>   
 
 [![Stars](https://img.shields.io/github/stars/TeamUltroid/Ultroid?style=flat-square&color=yellow)](https://github.com/TeamUltroid/Ultroid/stargazers)
 [![Forks](https://img.shields.io/github/forks/TeamUltroid/Ultroid?style=flat-square&color=orange)](https://github.com/TeamUltroid/Ultroid/fork)
@@ -89,15 +89,15 @@ Different ways to get your `SESSION`:
 * PowerShell : `cd desktop ; wget https://git.io/JY9JI ; python ultroid.py`
 * Termux : `sh -c "$(curl -fsSL https://da.gd/termux-tel)"`
 
-Made with 💕 by [@TeamUltroid](https://t.me/TeamUltroid). <br />
+Made with 💕 by [ASTEROID](https://t.me/Asteriod_support). <br />
 
 # License
-Ultroid is licensed under [GNU Affero General Public License](https://www.gnu.org/licenses/agpl-3.0.en.html) v3 or later.
+ASTEROID is licensed under [GNU Affero General Public License](https://www.gnu.org/licenses/agpl-3.0.en.html) v3 or later.
 
 [![License](https://www.gnu.org/graphics/agplv3-155x51.png)](LICENSE)
 
 # Credits
-* [![TeamUltroid-Devs](https://img.shields.io/static/v1?label=Teamultroid&message=devs&color=critical)](https://t.me/UltroidDevs)
-* [Lonami](https://github.com/LonamiWebs/) for [Telethon.](https://github.com/LonamiWebs/Telethon)
-* [AndrewLaneX](https://github.com/AndrewLaneX) for [tgcalls-base.](http://github.com/tgcallsjs/tgcalls)
+* [Javes 2](https://t.me/JavesGrouP)
+* [AVENGER-X](https://t.me/AVENGERXCHAT)
+* [SHIVANSH](https://t.me/Royal_Boy_45)
 
