@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="./resources/extras/logo_readme.jpg" alt="TEAMROYAL Logo">
+  <img src="./resources/extras/cee415d7720336ea1121debd2cddcbd1.png" alt="TEAMROYAL Logo">
 </p>
 <h1 align="center">
   <b>ASTERIOD - USERBOT</b>
