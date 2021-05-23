@@ -104,5 +104,5 @@ ASTEROID is licensed under [GNU Affero General Public License](https://www.gnu.o
 * [SHIVANSH](https://t.me/Royal_Boy_45)
 * [AMAAN](https://t.me/CoPYLess786)
 * [MD NOOR](https://t.me/SimpleBoy785)
-* [PAWAN] #Iska User name fix Nahi hai
+* [PAWAN](https://t.me/OYA_BSDK_BAAP_KO_TAG_MAT_KAR)
 
