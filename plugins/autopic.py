@@ -1,9 +1,4 @@
-# Ultroid - UserBot
-# Copyright (C) 2020 TeamUltroid
-#
-# This file is a part of < https://github.com/TeamUltroid/Ultroid/ >
-# PLease read the GNU Affero General Public License in
-# <https://www.github.com/TeamUltroid/Ultroid/blob/main/LICENSE/>.
+
 
 """
 ✘ Commands Available -
@@ -27,7 +22,7 @@ from telethon.tl.functions.photos import UploadProfilePhotoRequest
 from . import *
 
 
-@ultroid_cmd(pattern="autopic ?(.*)")
+@Asteriod_cmd(pattern="autopic ?(.*)")
 async def autopic(e):
     search = e.pattern_match.group(1)
     if not search:
@@ -43,9 +38,9 @@ async def autopic(e):
             if not ge == "True":
                 return
             au = "https://unsplash.com" + lie["href"]
-            et = await ultroid_bot(getweb(au))
+            et = await Asteriod_bot(getweb(au))
             try:
-                kar = await ultroid_bot.download_media(et.webpage.photo)
+                kar = await Asteriod_bot.download_media(et.webpage.photo)
             except AttributeError:
                 ct = r.get(au).content
                 bsc = bs(ct, "html.parser", from_encoding="utf-8")
@@ -53,13 +48,13 @@ async def autopic(e):
                 li = ft[0]["src"]
                 kar = "autopic.png"
                 urllib.request.urlretrieve(li, kar)
-            file = await ultroid_bot.upload_file(kar)
-            await ultroid_bot(UploadProfilePhotoRequest(file))
+            file = await Asteriod_bot.upload_file(kar)
+            await Asteriod_bot(UploadProfilePhotoRequest(file))
             os.remove(kar)
             await asyncio.sleep(1111)
 
 
-@ultroid_cmd(pattern="stoppic$")
+@Asteriod_cmd(pattern="stoppic$")
 async def stoppo(ult):
     gt = udB.get("AUTOPIC")
     if not gt == "True":
