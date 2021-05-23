@@ -1,9 +1,4 @@
-# Ultroid - UserBot
-# Copyright (C) 2020 TeamUltroid
-#
-# This file is a part of < https://github.com/TeamUltroid/Ultroid/ >
-# PLease read the GNU Affero General Public License in
-# <https://www.github.com/TeamUltroid/Ultroid/blob/main/LICENSE/>.
+
 
 """
 ✘ Commands Available -
@@ -22,12 +17,12 @@
 """
 
 
-from pyUltroid.functions.blacklist_db import *
+from pyAsteroid.functions.blacklist_db import *
 
 from . import *
 
 
-@ultroid_cmd(pattern="blacklist ?(.*)")
+@Asteriod_cmd(pattern="blacklist ?(.*)")
 async def af(e):
     if e.is_group:
         if not e._chat.admin_rights:
@@ -43,7 +38,7 @@ async def af(e):
     await eor(e, f"Done : `{wrd}` Blacklisted here.")
 
 
-@ultroid_cmd(pattern="remblacklist ?(.*)")
+@Asteriod_cmd(pattern="remblacklist ?(.*)")
 async def rf(e):
     if e.is_group:
         if not e._chat.admin_rights:
@@ -59,7 +54,7 @@ async def rf(e):
     await eor(e, f"Done : `{wrd}` Removed from Blacklist.")
 
 
-@ultroid_cmd(pattern="listblacklist")
+@Asteriod_cmd(pattern="listblacklist")
 async def lsnote(e):
     if e.is_group:
         if not e._chat.admin_rights:
@@ -72,7 +67,7 @@ async def lsnote(e):
         await eor(e, "No Blacklist word Found Here")
 
 
-@ultroid_bot.on(events.NewMessage(incoming=True))
+@Asteriod_bot.on(events.NewMessage(incoming=True))
 async def bl(e):
     chat = e.chat_id
     x = get_blacklist(int(chat))
