@@ -1,9 +1,4 @@
-# Ultroid - UserBot
-# Copyright (C) 2020 TeamUltroid
-#
-# This file is a part of < https://github.com/TeamUltroid/Ultroid/ >
-# PLease read the GNU Affero General Public License in
-# <https://www.github.com/TeamUltroid/Ultroid/blob/main/LICENSE/>.
+
 
 """
 ✘ Commands Available
@@ -22,7 +17,7 @@ from . import *
 tr = Translator()
 
 
-@ultroid_cmd(pattern="autocorrect")
+@Asteriod_cmd(pattern="autocorrect")
 async def acc(e):
     if not is_fullsudo(e.sender_id):
         return await eod(ult, "`This Command Is Sudo Restricted.`")
@@ -34,7 +29,7 @@ async def acc(e):
         await eod(e, "AUTOCORRECT Feature Off")
 
 
-@ultroid_bot.on(events.NewMessage(outgoing=True))
+@Asteriod_bot.on(events.NewMessage(outgoing=True))
 async def gramme(event):
     if Redis("AUTOCORRECT") != "True":
         return
