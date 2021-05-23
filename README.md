@@ -99,5 +99,10 @@ ASTEROID is licensed under [GNU Affero General Public License](https://www.gnu.o
 # Credits
 * [Javes 2](https://t.me/JavesGrouP)
 * [AVENGER-X](https://t.me/AVENGERXCHAT)
+ 
+# Special Credits
 * [SHIVANSH](https://t.me/Royal_Boy_45)
+* [AMAAN](https://t.me/CoPYLess786)
+* [MD NOOR](https://t.me/SimpleBoy785)
+* [PAWAN] #Iska User name fix Nahi hai
 
