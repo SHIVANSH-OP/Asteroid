@@ -1,9 +1,4 @@
-# Ultroid - UserBot
-# Copyright (C) 2020 TeamUltroid
-#
-# This file is a part of < https://github.com/TeamUltroid/Ultroid/ >
-# PLease read the GNU Affero General Public License in
-# <https://www.github.com/TeamUltroid/Ultroid/blob/main/LICENSE/>.
+
 
 """
 ✘ Commands Available -
@@ -56,7 +51,7 @@ from telethon.tl.types import ChatAdminRights, InputMessagesFilterPinned
 from . import *
 
 
-@ultroid_cmd(
+@Asteriod_cmd(
     pattern="promote ?(.*)",
     groups_only=True,
     admins_only=True,
@@ -70,7 +65,7 @@ async def prmte(ult):
     if not user:
         return await xx.edit("`Reply to a user to promote him!`")
     try:
-        await ultroid_bot(
+        await Asteriod_bot(
             EditAdminRequest(
                 ult.chat_id,
                 user.id,
@@ -94,7 +89,7 @@ async def prmte(ult):
     await xx.delete()
 
 
-@ultroid_cmd(
+@Asteriod_cmd(
     pattern="demote ?(.*)",
     groups_only=True,
     admins_only=True,
@@ -108,7 +103,7 @@ async def dmote(ult):
     if not user:
         return await xx.edit("`Reply to a user to demote him!`")
     try:
-        await ultroid_bot(
+        await Asteriod_bot(
             EditAdminRequest(
                 ult.chat_id,
                 user.id,
@@ -132,7 +127,7 @@ async def dmote(ult):
     await xx.delete()
 
 
-@ultroid_cmd(
+@Asteriod_cmd(
     pattern="ban ?(.*)",
     groups_only=True,
     admins_only=True,
@@ -146,7 +141,7 @@ async def bban(ult):
     if str(user.id) in DEVLIST:
         return await xx.edit(" `LoL, I can't Ban my Developer 😂`")
     try:
-        await ultroid_bot.edit_permissions(ult.chat_id, user.id, view_messages=False)
+        await Asteriod_bot.edit_permissions(ult.chat_id, user.id, view_messages=False)
     except BadRequestError:
         return await xx.edit("`I don't have the right to ban a user.`")
     except UserIdInvalidError:
@@ -169,7 +164,7 @@ async def bban(ult):
         )
 
 
-@ultroid_cmd(
+@Asteriod_cmd(
     pattern="unban ?(.*)",
     groups_only=True,
     admins_only=True,
@@ -181,7 +176,7 @@ async def uunban(ult):
     if not user:
         return await xx.edit("`Reply to a user or give username to unban him!`")
     try:
-        await ultroid_bot.edit_permissions(ult.chat_id, user.id, view_messages=True)
+        await Asteriod_bot.edit_permissions(ult.chat_id, user.id, view_messages=True)
     except BadRequestError:
         return await xx.edit("`I don't have the right to unban a user.`")
     except UserIdInvalidError:
@@ -196,7 +191,7 @@ async def uunban(ult):
         )
 
 
-@ultroid_cmd(
+@Asteriod_cmd(
     pattern="kick ?(.*)",
     groups_only=True,
     admins_only=True,
@@ -211,10 +206,10 @@ async def kck(ult):
         return await xx.edit("`Kick? Whom? I couldn't get his info...`")
     if str(user.id) in DEVLIST:
         return await xx.edit(" `Lol, I can't Kick my Developer`😂")
-    if user.id == ultroid_bot.uid:
+    if user.id == Asteriod_bot.uid:
         return await xx.edit("`You Can't kick urself`")
     try:
-        await ultroid_bot.kick_participant(ult.chat_id, user.id)
+        await Asteriod_bot.kick_participant(ult.chat_id, user.id)
         await asyncio.sleep(0.5)
     except BadRequestError:
         return await xx.edit("`I don't have the right to kick a user.`")
@@ -232,14 +227,14 @@ async def kck(ult):
         )
 
 
-@ultroid_cmd(
+@Asteriod_cmd(
     pattern="pin ?(.*)",
 )
 async def pin(msg):
     if not msg.is_private:
         # for pin(s) in private messages
         await msg.get_chat()
-    cht = await ultroid_bot.get_entity(msg.chat_id)
+    cht = await Asteriod_bot.get_entity(msg.chat_id)
     xx = msg.reply_to_msg_id
     tt = msg.text
     try:
@@ -255,7 +250,7 @@ async def pin(msg):
         slnt = True
         x = await eor(msg, get_string("com_1"))
         try:
-            await ultroid_bot.pin_message(msg.chat_id, xx, notify=slnt)
+            await Asteriod_bot.pin_message(msg.chat_id, xx, notify=slnt)
         except BadRequestError:
             return await x.edit("`Hmm, I'm have no rights here...`")
         except Exception as e:
@@ -263,7 +258,7 @@ async def pin(msg):
         await x.edit(f"`Pinned` [this message](https://t.me/c/{cht.id}/{xx})!")
     else:
         try:
-            await ultroid_bot.pin_message(msg.chat_id, xx, notify=False)
+            await Asteriod_bot.pin_message(msg.chat_id, xx, notify=False)
         except BadRequestError:
             return await eor(msg, "`Hmm, I'm have no rights here...`")
         except Exception as e:
@@ -274,7 +269,7 @@ async def pin(msg):
             pass
 
 
-@ultroid_cmd(
+@Asteriod_cmd(
     pattern="unpin($| (.*))",
 )
 async def unp(ult):
@@ -286,14 +281,14 @@ async def unp(ult):
     msg = ult.reply_to_msg_id
     if msg and not ch:
         try:
-            await ultroid_bot.unpin_message(ult.chat_id, msg)
+            await Asteriod_bot.unpin_message(ult.chat_id, msg)
         except BadRequestError:
             return await xx.edit("`Hmm, I'm have no rights here...`")
         except Exception as e:
             return await xx.edit(f"**ERROR:**\n`{str(e)}`")
     elif ch == "all":
         try:
-            await ultroid_bot.unpin_message(ult.chat_id)
+            await Asteriod_bot.unpin_message(ult.chat_id)
         except BadRequestError:
             return await xx.edit("`Hmm, I'm have no rights here...`")
         except Exception as e:
@@ -305,7 +300,7 @@ async def unp(ult):
     await xx.edit("`Unpinned!`")
 
 
-@ultroid_cmd(
+@Asteriod_cmd(
     pattern="purge ?(.*)",
 )
 async def fastpurger(purg):
@@ -319,7 +314,7 @@ async def fastpurger(purg):
         return
     if match and not purg.is_reply:
         p = 0
-        async for msg in ultroid_bot.iter_messages(purg.chat_id, limit=int(match)):
+        async for msg in Asteriod_bot.iter_messages(purg.chat_id, limit=int(match)):
             await msg.delete()
             p += 0
         return await eod(purg, f"Purged {p} Messages! ")
@@ -327,17 +322,17 @@ async def fastpurger(purg):
     count = 0
     if not (purg.reply_to_msg_id or match):
         return await eod(purg, "`Reply to a message to purge from.`", time=10)
-    async for msg in ultroid_bot.iter_messages(chat, min_id=purg.reply_to_msg_id):
+    async for msg in Asteriod_bot.iter_messages(chat, min_id=purg.reply_to_msg_id):
         msgs.append(msg)
         count = count + 1
         msgs.append(purg.reply_to_msg_id)
         if len(msgs) == 100:
-            await ultroid_bot.delete_messages(chat, msgs)
+            await Asteriod_bot.delete_messages(chat, msgs)
             msgs = []
 
     if msgs:
-        await ultroid_bot.delete_messages(chat, msgs)
-    done = await ultroid_bot.send_message(
+        await Asteriod_bot.delete_messages(chat, msgs)
+    done = await Asteriod_bot.send_message(
         purg.chat_id,
         "__Fast purge complete!__\n**Purged** `"
         + str(len(msgs))
@@ -349,7 +344,7 @@ async def fastpurger(purg):
     await done.delete()
 
 
-@ultroid_cmd(
+@Asteriod_cmd(
     pattern="purgeme ?(.*)",
 )
 async def fastpurgerme(purg):
@@ -361,7 +356,7 @@ async def fastpurgerme(purg):
             await eod(purg, "`Give a Valid Input.. `")
             return
         mp = 0
-        async for mm in ultroid_bot.iter_messages(
+        async for mm in Asteriod_bot.iter_messages(
             purg.chat_id, limit=nnt, from_user="me"
         ):
             await mm.delete()
@@ -377,7 +372,7 @@ async def fastpurgerme(purg):
             "`Reply to a message to purge from or use it like ``purgeme <num>`",
             time=10,
         )
-    async for msg in ultroid_bot.iter_messages(
+    async for msg in Asteriod_bot.iter_messages(
         chat,
         from_user="me",
         min_id=purg.reply_to_msg_id,
@@ -386,12 +381,12 @@ async def fastpurgerme(purg):
         count = count + 1
         msgs.append(purg.reply_to_msg_id)
         if len(msgs) == 100:
-            await ultroid_bot.delete_messages(chat, msgs)
+            await Asteriod_bot.delete_messages(chat, msgs)
             msgs = []
 
     if msgs:
-        await ultroid_bot.delete_messages(chat, msgs)
-    done = await ultroid_bot.send_message(
+        await Asteriod_bot.delete_messages(chat, msgs)
+    done = await Asteriod_bot.send_message(
         purg.chat_id,
         "__Fast purge complete!__\n**Purged** `" + str(count) + "` **messages.**",
     )
@@ -399,7 +394,7 @@ async def fastpurgerme(purg):
     await done.delete()
 
 
-@ultroid_cmd(
+@Asteriod_cmd(
     pattern="purgeall$",
 )
 async def _(e):
@@ -408,7 +403,7 @@ async def _(e):
         input = (await e.get_reply_message()).sender_id
         name = (await e.client.get_entity(input)).first_name
         try:
-            await ultroid_bot(DeleteUserHistoryRequest(e.chat_id, input))
+            await Asteriod_bot(DeleteUserHistoryRequest(e.chat_id, input))
             await eod(e, f"Successfully Purged All Messages from {name}")
         except Exception as er:
             return await eod(xx, str(er), time=5)
@@ -420,7 +415,7 @@ async def _(e):
         )
 
 
-@ultroid_cmd(pattern="pinned")
+@Asteriod_cmd(pattern="pinned")
 async def get_pinned(event):
     x = await eor(event, get_string("com_1"))
     chat_id = (str(event.chat_id)).replace("-100", "")
@@ -428,7 +423,7 @@ async def get_pinned(event):
     tem = ""
     c = 0
 
-    async for i in ultroid.iter_messages(
+    async for i in Asteroid.iter_messages(
         event.chat_id, filter=InputMessagesFilterPinned
     ):
         c += 1
@@ -440,14 +435,14 @@ async def get_pinned(event):
         return await eod(x, "There is no pinned message in chat!", time=5)
 
 
-@ultroid_cmd(pattern="listpinned")
+@Asteriod_cmd(pattern="listpinned")
 async def get_all_pinned(event):
     x = await eor(event, get_string("com_1"))
     chat_id = (str(event.chat_id)).replace("-100", "")
     chat_name = (await event.get_chat()).title
     a = ""
     c = 1
-    async for i in ultroid.iter_messages(
+    async for i in Asteroid.iter_messages(
         event.chat_id, filter=InputMessagesFilterPinned
     ):
         a += f"{c}. <a href=https://t.me/c/{chat_id}/{i.id}>Go to message.</a>\n"
@@ -464,7 +459,7 @@ async def get_all_pinned(event):
     await x.edit(m + a, parse_mode="html")
 
 
-@ultroid_cmd(pattern="autodelete ?(.*)", groups_only=True, admins_only=True)
+@Asteriod_cmd(pattern="autodelete ?(.*)", groups_only=True, admins_only=True)
 async def autodelte(ult):  # Tg Feature
     match = ult.pattern_match.group(1)
     if not match or match not in ["24h", "7d", "off"]:
@@ -476,7 +471,7 @@ async def autodelte(ult):  # Tg Feature
     else:
         tt = 0
     try:
-        await ultroid_bot(SetHistoryTTLRequest(ult.chat_id, period=tt))
+        await Asteriod_bot(SetHistoryTTLRequest(ult.chat_id, period=tt))
     except ChatNotModifiedError:
         return await eod(ult, f"Auto Delete Setting is Already same to `{match}`")
     await eor(ult, f"Auto Delete Status Changed to {match} !")
