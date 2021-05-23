@@ -1,23 +1,18 @@
-# Ultroid - UserBot
-# Copyright (C) 2020 TeamUltroid
-#
-# This file is a part of < https://github.com/TeamUltroid/Ultroid/ >
-# PLease read the GNU Affero General Public License in
-# <https://www.github.com/TeamUltroid/Ultroid/blob/main/LICENSE/>.
+
 
 import time
 
-from pyUltroid.dB import *
-from pyUltroid.dB.core import *
-from pyUltroid.functions.all import *
-from pyUltroid.functions.broadcast_db import *
-from pyUltroid.functions.gban_mute_db import *
-from pyUltroid.functions.goodbye_db import *
-from pyUltroid.functions.google_image import googleimagesdownload
-from pyUltroid.functions.sudos import *
-from pyUltroid.functions.welcome_db import *
-from pyUltroid.functions.ytdl import *
-from pyUltroid.utils import *
+from pyAsteroid.dB import *
+from PyAsteroid.dB.core import *
+from PyAsteroid.functions.all import *
+from PyAsteroid.functions.broadcast_db import *
+from PyAsteroid.functions.gban_mute_db import *
+from PyAsteroid.functions.goodbye_db import *
+from PyAsteroid.functions.google_image import googleimagesdownload
+from PyAsteroid.functions.sudos import *
+from PyAsteroid.functions.welcome_db import *
+from PyAsteroid.functions.ytdl import *
+from PyAsteroid.utils import *
 
 from strings import get_string
 
@@ -31,8 +26,8 @@ except ModuleNotFoundError:
 
 start_time = time.time()
 ultroid_version = "v0.0.7"
-OWNER_NAME = ultroid_bot.me.first_name
-OWNER_ID = ultroid_bot.me.id
+OWNER_NAME = Asteriod_bot.me.first_name
+OWNER_ID = Asteriod_bot.me.id
 
 List = []
 Dict = {}
