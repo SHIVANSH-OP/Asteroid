@@ -1,15 +1,8 @@
-#!/bin/bash
-# Ultroid - UserBot
-# Copyright (C) 2020 TeamUltroid
-#
-# This file is a part of < https://github.com/TeamUltroid/Ultroid/ >
-# PLease read the GNU Affero General Public License in
-# <https://www.github.com/TeamUltroid/Ultroid/blob/main/LICENSE/>.
+
 
 import os
 from time import sleep
-
-# https://www.tutorialspoint.com/how-to-clear-screen-in-python#:~:text=In%20Python%20sometimes%20we%20have,screen%20by%20pressing%20Control%20%2B%20l%20.
+.
 if os.name == "posix":
     _ = os.system("clear")
 else:
@@ -68,10 +61,10 @@ API_HASH = input("Please enter your API HASH: ")
 # logging in
 try:
     with TelegramClient(StringSession(), API_ID, API_HASH) as ultroid:
-        print("Generating a user session for Ultroid...")
-        ult = ultroid.send_message(
+        print("Generating a user session for Asteroid...")
+        ult = Asteroid.send_message(
             "me",
-            f"**ULTROID** `SESSION`:\n\n`{ultroid.session.save()}`\n\n**Do not share this anywhere!**",
+            f"**ASTEROID** `SESSION`:\n\n`{Asteroid.session.save()}`\n\n**Do not share this anywhere!**",
         )
         print("Your SESSION has been generated. Check your telegram saved messages!")
         exit(0)
