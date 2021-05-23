@@ -1,9 +1,4 @@
-# Ultroid - UserBot
-# Copyright (C) 2020 TeamUltroid
-#
-# This file is a part of < https://github.com/TeamUltroid/Ultroid/ >
-# PLease read the GNU Affero General Public License in
-# <https://www.github.com/TeamUltroid/Ultroid/blob/main/LICENSE/>.
+
 
 """
 ✘ Commands Available -
@@ -18,7 +13,7 @@
 import asyncio
 from datetime import datetime
 
-from pyUltroid.functions.pmpermit_db import *
+from pyAsteroid.functions.pmpermit_db import *
 from telethon import events
 from telethon.tl.functions.account import GetPrivacyRequest
 from telethon.tl.types import InputPrivacyKeyStatusTimestamp, PrivacyValueAllowAll
@@ -40,8 +35,8 @@ afk_start = {}
 LOG = int(udB.get("LOG_CHANNEL"))
 
 
-@ultroid_bot.on(events.NewMessage(outgoing=True))
-@ultroid_bot.on(events.MessageEdited(outgoing=True))
+@Asteriod_bot.on(events.NewMessage(outgoing=True))
+@Asteriod_bot.on(events.MessageEdited(outgoing=True))
 async def set_not_afk(event):
     if event.is_private:
         if Redis("PMSETTING") == "True":
@@ -60,38 +55,38 @@ async def set_not_afk(event):
     if "afk" not in current_message and "yes" in USER_AFK:
         try:
             if pic.endswith((".tgs", ".webp")):
-                shite = await ultroid_bot.send_message(event.chat_id, file=pic)
-                shites = await ultroid_bot.send_message(
+                shite = await Asteriod_bot.send_message(event.chat_id, file=pic)
+                shites = await Asteriod_bot.send_message(
                     event.chat_id,
                     get_string("afk_1").format(total_afk_time),
                 )
             else:
-                shite = await ultroid_bot.send_message(
+                shite = await Asteriod_bot.send_message(
                     event.chat_id,
                     get_string("afk_1").format(total_afk_time),
                     file=pic,
                 )
         except BaseException:
-            shite = await ultroid_bot.send_message(
+            shite = await Asteriod_bot.send_message(
                 event.chat_id,
                 get_string("afk_1").format(total_afk_time),
             )
         try:
             try:
                 if pic.endswith((".tgs", ".webp")):
-                    await ultroid_bot.send_message(LOG, file=pic)
-                    await ultroid_bot.send_message(
+                    await Asteriod_bot.send_message(LOG, file=pic)
+                    await Asteriod_bot.send_message(
                         LOG,
                         get_string("afk_2").format(total_afk_time),
                     )
                 else:
-                    await ultroid_bot.send_message(
+                    await Asteriod_bot.send_message(
                         LOG,
                         get_string("afk_2").format(total_afk_time),
                         file=pic,
                     )
             except BaseException:
-                await ultroid_bot.send_message(
+                await Asteriod_bot.send_message(
                     LOG,
                     get_string("afk_2").format(total_afk_time),
                 )
@@ -107,7 +102,7 @@ async def set_not_afk(event):
         afk_time = None
 
 
-@ultroid_bot.on(
+@Asteriod_bot.on(
     events.NewMessage(incoming=True, func=lambda e: bool(e.mentioned or e.is_private)),
 )
 async def on_afk(event):
@@ -158,7 +153,7 @@ async def on_afk(event):
             pass
 
 
-@ultroid_cmd(pattern=r"afk ?(.*)")
+@Asteriod_cmd(pattern=r"afk ?(.*)")
 async def _(event):
     if not is_fullsudo(event.sender_id):
         return await eor(event, "`This Command Is Sudo Restricted.`")
@@ -193,60 +188,60 @@ async def _(event):
         if reason:
             try:
                 if pic.endswith((".tgs", ".webp")):
-                    await ultroid_bot.send_message(event.chat_id, file=pic)
-                    await ultroid_bot.send_message(
+                    await Asteriod_bot.send_message(event.chat_id, file=pic)
+                    await Asteriod_bot.send_message(
                         event.chat_id,
                         get_string("afk_5").format(reason),
                     )
                 else:
-                    await ultroid_bot.send_message(
+                    await Asteriod_bot.send_message(
                         event.chat_id,
                         get_string("afk_5").format(reason),
                         file=pic,
                     )
             except BaseException:
-                await ultroid_bot.send_message(
+                await Asteriod_bot.send_message(
                     event.chat_id,
                     get_string("afk_5").format(reason),
                 )
         else:
             try:
                 if pic.endswith((".tgs", ".webp")):
-                    await ultroid_bot.send_message(event.chat_id, file=pic)
-                    await ultroid_bot.send_message(event.chat_id, get_string("afk_6"))
+                    await Asteriod_bot.send_message(event.chat_id, file=pic)
+                    await Asteriod_bot.send_message(event.chat_id, get_string("afk_6"))
                 else:
-                    await ultroid_bot.send_message(
+                    await Asteriod_bot.send_message(
                         event.chat_id,
                         get_string("afk_6"),
                         file=pic,
                     )
             except BaseException:
-                await ultroid_bot.send_message(event.chat_id, get_string("afk_6"))
+                await Asteriod_bot.send_message(event.chat_id, get_string("afk_6"))
         await event.delete()
         try:
             if reason and pic:
                 if pic.endswith((".tgs", ".webp")):
-                    await ultroid_bot.send_message(LOG, file=pic)
-                    await ultroid_bot.send_message(
+                    await Asteriod_bot.send_message(LOG, file=pic)
+                    await Asteriod_bot.send_message(
                         LOG,
                         get_string("afk_7").format(reason),
                     )
                 else:
-                    await ultroid_bot.send_message(
+                    await Asteriod_bot.send_message(
                         LOG,
                         get_string("afk_7").format(reason),
                         file=pic,
                     )
             elif reason:
-                await ultroid_bot.send_message(LOG, get_string("afk_7").format(reason))
+                await Asteriod_bot.send_message(LOG, get_string("afk_7").format(reason))
             elif pic:
                 if pic.endswith((".tgs", ".webp")):
-                    await ultroid_bot.send_message(LOG, file=pic)
-                    await ultroid_bot.send_message(LOG, get_string("afk_8"))
+                    await Asteriod_bot.send_message(LOG, file=pic)
+                    await Asteriod_bot.send_message(LOG, get_string("afk_8"))
                 else:
-                    await ultroid_bot.send_message(LOG, get_string("afk_8"), file=pic)
+                    await Asteriod_bot.send_message(LOG, get_string("afk_8"), file=pic)
             else:
-                await ultroid_bot.send_message(LOG, get_string("afk_8"))
+                await Asteriod_bot.send_message(LOG, get_string("afk_8"))
         except BaseException:
             pass
 
