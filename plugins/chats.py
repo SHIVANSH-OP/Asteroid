@@ -1,9 +1,3 @@
-# Ultroid - UserBot
-# Copyright (C) 2020 TeamUltroid
-#
-# This file is a part of < https://github.com/TeamUltroid/Ultroid/ >
-# PLease read the GNU Affero General Public License in
-# <https://www.github.com/TeamUltroid/Ultroid/blob/main/LICENSE/>.
 
 """
 ✘ Commands Available -
@@ -33,7 +27,7 @@ from telethon.tl.functions.messages import (
 from . import *
 
 
-@ultroid_cmd(
+@Asteroid_cmd(
     pattern="delchat$",
     groups_only=True,
 )
@@ -52,7 +46,7 @@ async def _(e):
     )
 
 
-@ultroid_cmd(
+@Asteroid_cmd(
     pattern="getlink$",
     groups_only=True,
 )
@@ -67,7 +61,7 @@ async def _(e):
     await eod(xx, f"Link:- {r.link}")
 
 
-@ultroid_cmd(
+@Asteroid_cmd(
     pattern="create (b|g|c)(?: |$)(.*)",
 )
 async def _(e):
