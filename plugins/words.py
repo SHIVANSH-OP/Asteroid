@@ -1,9 +1,4 @@
-# Ultroid - UserBot
-# Copyright (C) 2020 TeamUltroid
-#
-# This file is a part of < https://github.com/TeamUltroid/Ultroid/ >
-# PLease read the GNU Affero General Public License in
-# <https://www.github.com/TeamUltroid/Ultroid/blob/main/LICENSE/>.
+
 
 """
 ✘ Commands Available -
@@ -29,7 +24,7 @@ from . import *
 dictionary = PyDictionary()
 
 
-@ultroid_cmd(
+@Asteroid_cmd(
     pattern="meaning",
 )
 async def mean(event):
@@ -49,7 +44,7 @@ async def mean(event):
     if len(x) > 4096:
         with io.BytesIO(str.encode(x)) as fle:
             fle.name = f"{wrd}-meanings.txt"
-            await ultroid_bot.send_file(
+            await Asteroid_bot.send_file(
                 event.chat_id,
                 out_file,
                 force_document=True,
@@ -62,7 +57,7 @@ async def mean(event):
         await xx.edit(x)
 
 
-@ultroid_cmd(
+@Asteroid_cmd(
     pattern="synonym",
 )
 async def mean(event):
@@ -79,7 +74,7 @@ async def mean(event):
         if len(x) > 4096:
             with io.BytesIO(str.encode(x)) as fle:
                 fle.name = f"{wrd}-synonyms.txt"
-                await ultroid_bot.send_file(
+                await Asteroid_bot.send_file(
                     event.chat_id,
                     out_file,
                     force_document=True,
@@ -94,7 +89,7 @@ async def mean(event):
         await xx.edit(f"No synonym found!!\n{str(e)}")
 
 
-@ultroid_cmd(
+@Asteroid_cmd(
     pattern="antonym",
 )
 async def mean(event):
@@ -111,7 +106,7 @@ async def mean(event):
         if len(x) > 4096:
             with io.BytesIO(str.encode(x)) as fle:
                 fle.name = f"{wrd}-antonyms.txt"
-                await ultroid_bot.send_file(
+                await Asteroid_bot.send_file(
                     event.chat_id,
                     out_file,
                     force_document=True,
@@ -126,7 +121,7 @@ async def mean(event):
         await xx.edit(f"No antonym found!!\n{str(e)}")
 
 
-@ultroid_cmd(pattern="ud (.*)")
+@Asteroid_cmd(pattern="ud (.*)")
 async def _(event):
     xx = await eor(event, get_string("com_1"))
     word = event.pattern_match.group(1)
