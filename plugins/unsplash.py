@@ -1,9 +1,4 @@
-# Ultroid - UserBot
-# Copyright (C) 2020 TeamUltroid
-#
-# This file is a part of < https://github.com/TeamUltroid/Ultroid/ >
-# PLease read the GNU Affero General Public License in
-# <https://www.github.com/TeamUltroid/Ultroid/blob/main/LICENSE/>.
+
 
 """
 ✘ Commands Available -
@@ -22,7 +17,7 @@ from bs4 import BeautifulSoup as bs
 from . import *
 
 
-@ultroid_cmd(pattern="unsplash ?(.*)")
+@Asteroid_cmd(pattern="unsplash ?(.*)")
 async def searchunsl(ult):
     match = ult.pattern_match.group(1)
     if not match:
