@@ -1,9 +1,4 @@
-# Ultroid - UserBot
-# Copyright (C) 2020 TeamUltroid
-#
-# This file is a part of < https://github.com/TeamUltroid/Ultroid/ >
-# PLease read the GNU Affero General Public License in
-# <https://www.github.com/TeamUltroid/Ultroid/blob/main/LICENSE/>.
+
 
 """
 ✘ Commands Available -
@@ -22,14 +17,14 @@
 """
 import os
 
-from pyUltroid.functions.snips_db import *
+from pyAsteroid.functions.snips_db import *
 from telegraph import upload_file as uf
 from telethon.utils import pack_bot_file_id
 
 from . import *
 
 
-@ultroid_cmd(pattern="addsnip ?(.*)")
+@Asteroid_cmd(pattern="addsnip ?(.*)")
 async def an(e):
     wrd = (e.pattern_match.group(1)).lower()
     wt = await e.get_reply_message()
@@ -63,7 +58,7 @@ async def an(e):
     await eor(e, f"Done : snip `${wrd}` Saved.")
 
 
-@ultroid_cmd(pattern="remsnip ?(.*)")
+@Asteroid_cmd(pattern="remsnip ?(.*)")
 async def rs(e):
     wrd = (e.pattern_match.group(1)).lower()
     if not wrd:
@@ -74,7 +69,7 @@ async def rs(e):
     await eor(e, f"Done : snip `${wrd}` Removed.")
 
 
-@ultroid_cmd(pattern="listsnip")
+@Asteroid_cmd(pattern="listsnip")
 async def lsnote(e):
     x = list_snip()
     if x:
@@ -84,7 +79,7 @@ async def lsnote(e):
         await eor(e, "No Snips Found Here")
 
 
-@ultroid_bot.on(events.NewMessage(outgoing=True))
+@Asteroid_bot.on(events.NewMessage(outgoing=True))
 async def notes(e):
     xx = (e.text).lower()
     if not xx.startswith("$"):
@@ -102,7 +97,7 @@ async def notes(e):
             if rep:
                 await rep.reply(msg, file=media)
             else:
-                await ultroid_bot.send_message(e.chat_id, msg, file=media)
+                await Asteroid_bot.send_message(e.chat_id, msg, file=media)
                 await e.delete()
 
 
