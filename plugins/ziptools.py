@@ -1,9 +1,4 @@
-# Ultroid - UserBot
-# Copyright (C) 2020 TeamUltroid
-#
-# This file is a part of < https://github.com/TeamUltroid/Ultroid/ >
-# PLease read the GNU Affero General Public License in
-# <https://www.github.com/TeamUltroid/Ultroid/blob/main/LICENSE/>.
+/>.
 
 """
 ✘ Commands Available
@@ -29,7 +24,7 @@ import time
 from . import *
 
 
-@ultroid_cmd(pattern="zip$")
+@Asteroid_cmd(pattern="zip$")
 async def zipp(event):
     reply = await event.get_reply_message()
     t = time.time()
@@ -50,7 +45,7 @@ async def zipp(event):
     await bash(f"zip -r {inp} {file}")
     k = time.time()
     xxx = await uploader(inp, inp, k, xx, "Uploading...")
-    await ultroid_bot.send_file(
+    await Asteroid_bot.send_file(
         event.chat_id,
         xxx,
         force_document=True,
@@ -63,7 +58,7 @@ async def zipp(event):
     await xx.delete()
 
 
-@ultroid_cmd(pattern="unzip$")
+@Asteroid_cmd(pattern="unzip$")
 async def unzipp(event):
     reply = await event.get_reply_message()
     t = time.time()
@@ -107,7 +102,7 @@ async def unzipp(event):
         for x in ok:
             k = time.time()
             xxx = await uploader(x, x, k, xx, "Uploading...")
-            await ultroid_bot.send_file(
+            await Asteroid_bot.send_file(
                 event.chat_id,
                 xxx,
                 force_document=True,
@@ -117,7 +112,7 @@ async def unzipp(event):
         await xx.delete()
 
 
-@ultroid_cmd(pattern="addzip$")
+@Asteroid_cmd(pattern="addzip$")
 async def azipp(event):
     reply = await event.get_reply_message()
     t = time.time()
@@ -141,17 +136,17 @@ async def azipp(event):
     )
 
 
-@ultroid_cmd(pattern="dozip$")
+@Asteroid_cmd(pattern="dozip$")
 async def do_zip(event):
     if not os.path.isdir("zip"):
         return await eor(
             event, "First All Files Via {i}addzip then doZip to zip all files at one."
         )
     xx = await eor(event, "`processing`")
-    await bash(f"zip -r ultroid.zip zip/*")
+    await bash(f"zip -r Asteroid.zip zip/*")
     k = time.time()
-    xxx = await uploader("ultroid.zip", "ultroid.zip", k, xx, "Uploading...")
-    await ultroid_bot.send_file(
+    xxx = await uploader("Asteroid.zip", "Asteroid.zip", k, xx, "Uploading...")
+    await Asteroid_bot.send_file(
         event.chat_id,
         xxx,
         force_document=True,
