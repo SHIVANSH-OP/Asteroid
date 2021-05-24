@@ -1,9 +1,4 @@
-# Ultroid - UserBot
-# Copyright (C) 2020 TeamUltroid
-#
-# This file is a part of < https://github.com/TeamUltroid/Ultroid/ >
-# PLease read the GNU Affero General Public License in
-# <https://www.github.com/TeamUltroid/Ultroid/blob/main/LICENSE/>.
+
 
 """
 ✘ Commands Available -
@@ -38,8 +33,8 @@
 
 import re
 
-from pyUltroid.functions.logusers_db import *
-from pyUltroid.functions.pmpermit_db import *
+from pyAsteroid.functions.logusers_db import *
+from pyAsteroid.functions.pmpermit_db import *
 from telethon import events
 from telethon.tl.functions.contacts import BlockRequest, UnblockRequest
 from telethon.tl.functions.messages import ReportSpamRequest
@@ -53,7 +48,7 @@ LASTMSG = {}
 if Redis("PMPIC"):
     PMPIC = Redis("PMPIC")
 else:
-    PMPIC = "resources/extras/teamultroid.jpg"
+    PMPIC = "resources/extras/teamAsteroid.jpg"
 
 UND = get_string("pmperm_1")
 
@@ -100,7 +95,7 @@ PMCMDS = [
 # =================================================================
 
 
-@ultroid_cmd(
+@Asteroid_cmd(
     pattern="logpm$",
 )
 async def _(e):
@@ -113,7 +108,7 @@ async def _(e):
         return await eod(e, "`Wasn logging msgs from here.`", time=3)
 
 
-@ultroid_cmd(
+@Asteroid_cmd(
     pattern="nologpm$",
 )
 async def _(e):
@@ -126,7 +121,7 @@ async def _(e):
         return await eod(e, "`Wasn't logging msgs from here.`", time=3)
 
 
-@ultroid_bot.on(
+@Asteroid_bot.on(
     events.NewMessage(
         incoming=True,
         func=lambda e: e.is_private,
@@ -150,7 +145,7 @@ if sett is None:
     sett = True
 if sett == "True" and sett != "False":
 
-    @ultroid_bot.on(
+    @Asteroid_bot.on(
         events.NewMessage(
             outgoing=True,
             func=lambda e: e.is_private,
@@ -172,7 +167,7 @@ if sett == "True" and sett != "False":
             async for message in e.client.iter_messages(e.chat_id, search=UNS):
                 await message.delete()
             try:
-                await ultroid_bot.edit_folder(e.chat_id, folder=0)
+                await Asteroid_bot.edit_folder(e.chat_id, folder=0)
             except BaseException:
                 pass
             name = await e.client.get_entity(e.chat_id)
@@ -182,7 +177,7 @@ if sett == "True" and sett != "False":
                 f"#AutoApproved\nßecoz of outgoing msg\nUser - [{name0}](tg://user?id={e.chat_id})",
             )
 
-    @ultroid_bot.on(
+    @Asteroid_bot.on(
         events.NewMessage(
             incoming=True,
             func=lambda e: e.is_private,
@@ -224,7 +219,7 @@ if sett == "True" and sett != "False":
                         ],
                     )
                 except BaseException:
-                    await ultroid.send_message(
+                    await Asteroid.send_message(
                         int(udB.get("LOG_CHANNEL")), f"Incoming PM from {mention}!"
                     )
                 wrn = 1
@@ -326,7 +321,7 @@ if sett == "True" and sett != "False":
                     f"[{name0}](tg://user?id={user.id}) was Blocked for spamming.",
                 )
 
-    @ultroid_cmd(
+    @Asteroid_cmd(
         pattern="(start|stop|clear)archive$",
     )
     async def _(e):
@@ -344,7 +339,7 @@ if sett == "True" and sett != "False":
             except Exception as mm:
                 await eod(e, str(mm))
 
-    @ultroid_cmd(
+    @Asteroid_cmd(
         pattern="(a|approve)(?: |$)",
     )
     async def approvepm(apprvpm):
@@ -410,7 +405,7 @@ if sett == "True" and sett != "False":
         else:
             await apprvpm.edit(NO_REPLY)
 
-    @ultroid_cmd(
+    @Asteroid_cmd(
         pattern="(da|disapprove)(?: |$)",
     )
     async def disapprovepm(e):
@@ -463,7 +458,7 @@ if sett == "True" and sett != "False":
             await e.edit(NO_REPLY)
 
 
-@ultroid_cmd(
+@Asteroid_cmd(
     pattern="block ?(.*)",
 )
 async def blockpm(block):
@@ -489,13 +484,13 @@ async def blockpm(block):
         disapprove_user(user)
     except AttributeError:
         pass
-    await ultroid_bot.send_message(
+    await Asteroid_bot.send_message(
         int(udB.get("LOG_CHANNEL")),
         f"#BLOCKED\nUser: [{aname.first_name}](tg://user?id={user})",
     )
 
 
-@ultroid_cmd(
+@Asteroid_cmd(
     pattern="unblock ?(.*)",
 )
 async def unblockpm(unblock):
@@ -528,11 +523,11 @@ async def apr_in(event):
     if not is_approved(uid):
         approve_user(uid)
         try:
-            await ultroid_bot.edit_folder(uid, folder=0)
+            await Asteroid_bot.edit_folder(uid, folder=0)
         except BaseException:
             pass
         try:
-            user_name = (await ultroid.get_entity(uid)).first_name
+            user_name = (await Asteroid.get_entity(uid)).first_name
         except BaseException:
             user_name = ""
         await event.edit(
@@ -542,12 +537,12 @@ async def apr_in(event):
                 Button.inline("Block", data=f"block_{uid}"),
             ],
         )
-        async for message in ultroid.iter_messages(uid, search=UND):
+        async for message in Asteroid.iter_messages(uid, search=UND):
             await message.delete()
-        async for message in ultroid.iter_messages(uid, search=UNS):
+        async for message in Asteroid.iter_messages(uid, search=UNS):
             await message.delete()
         await event.answer("Approved.")
-        x = await ultroid.send_message(uid, "You have been approved to PM me!")
+        x = await Asteroid.send_message(uid, "You have been approved to PM me!")
         await asyncio.sleep(5)
         await x.delete()
     else:
@@ -571,7 +566,7 @@ async def disapr_in(event):
     if is_approved(uid):
         disapprove_user(uid)
         try:
-            user_name = (await ultroid.get_entity(uid)).first_name
+            user_name = (await Asteroid.get_entity(uid)).first_name
         except BaseException:
             user_name = ""
         await event.edit(
@@ -582,7 +577,7 @@ async def disapr_in(event):
             ],
         )
         await event.answer("DisApproved.")
-        x = await ultroid.send_message(uid, "You have been disapproved from PMing me!")
+        x = await Asteroid.send_message(uid, "You have been disapproved from PMing me!")
         await asyncio.sleep(5)
         await x.delete()
     else:
@@ -603,9 +598,9 @@ async def disapr_in(event):
 @owner
 async def blck_in(event):
     uid = int(event.data_match.group(1).decode("UTF-8"))
-    await ultroid(BlockRequest(uid))
+    await Asteroid(BlockRequest(uid))
     try:
-        user_name = (await ultroid.get_entity(uid)).first_name
+        user_name = (await Asteroid.get_entity(uid)).first_name
     except BaseException:
         user_name = ""
     await event.answer("Blocked.")
@@ -623,9 +618,9 @@ async def blck_in(event):
 @owner
 async def unblck_in(event):
     uid = int(event.data_match.group(1).decode("UTF-8"))
-    await ultroid(UnblockRequest(uid))
+    await Asteroid(UnblockRequest(uid))
     try:
-        user_name = (await ultroid.get_entity(uid)).first_name
+        user_name = (await Asteroid.get_entity(uid)).first_name
     except BaseException:
         user_name = ""
     await event.answer("UnBlocked.")
