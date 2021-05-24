@@ -1,12 +1,4 @@
-# /usr/bin/python3
-# Ultroid - UserBot
-# Copyright (C) 2020 TeamUltroid
-#
-# This file is a part of < https://github.com/TeamUltroid/Ultroid/ >
-# Please read the GNU Affero General Public License in
-# <https://www.github.com/TeamUltroid/Ultroid/blob/main/LICENSE/>.
 
-# Standalone file for facilitating local deploys.
 
 import os
 
@@ -26,15 +18,15 @@ def start():
     check_for_py()
 
     print(f"{a}\n\n")
-    print("Welcome to Ultroid, lets start setting up!\n\n")
+    print("Welcome to Asteroid, lets start setting up!\n\n")
     print("Cloning the repository...\n\n")
     try:
         os.system("rm -rf Ultroid")
     except BaseException:
         pass
-    os.system("git clone https://github.com/TeamUltroid/Ultroid")
+    os.system("git clone https://github.com/TEAMROYAL/Asteroid")
     print("\n\nDone")
-    os.chdir("Ultroid")
+    os.chdir("Asteroid")
     clear_screen()
     print(a)
     print("\n\nLet's start!\n")
@@ -62,7 +54,7 @@ def start():
         "REDIS_URI",
         "REDIS_PASSWORD",
     ]
-    all_done = "# Ultroid Environment Variables.\n# Do not delete this file.\n\n"
+    all_done = "# Asteroid Environment Variables.\n# Do not delete this file.\n\n"
     for i in varrs:
         all_done += do_input(i)
     clear_screen()
@@ -71,7 +63,7 @@ def start():
     print(all_done)
     isitdone = input("\n\nIs it all correct? [y/n]")
     if isitdone == "y":
-        # https://github.com/TeamUltroid/Ultroid/blob/31b9eb1f4f8059e0ae66adb74cb6e8174df12eac/resources/startup/locals.py#L35
+        
         f = open(".env", "w")
         f.write(all_done)
         f.close
@@ -79,7 +71,7 @@ def start():
         print("Oh, let's redo these then -_-")
         start()
     else:
-        # https://github.com/TeamUltroid/Ultroid/blob/31b9eb1f4f8059e0ae66adb74cb6e8174df12eac/resources/startup/locals.py#L35
+        
         f = open(".env", "w")
         f.write(all_done)
         f.close
@@ -90,8 +82,8 @@ def start():
     os.system("pip3 install -r resources/extras/local-requirements.txt")
     clear_screen()
     print(a)
-    print("\nStarting Ultroid...")
-    os.system("python3 -m pyUltroid")
+    print("\nStarting Asteroid...")
+    os.system("python3 -m pyAsteroid")
 
 
 def do_input(var):
@@ -134,8 +126,7 @@ def check_for_py():
 
 def gen_session():
     print("\nProcessing...")
-    # https://github.com/TeamUltroid/Ultroid/blob/31b9eb1f4f8059e0ae66adb74cb6e8174df12eac/resources/startup/locals.py#L35
-    os.system("python3 resources/session/ssgen.py")
+   os.system("python3 resources/session/ssgen.py")
     return
 
 
