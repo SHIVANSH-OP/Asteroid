@@ -1,9 +1,4 @@
-# Ultroid - UserBot
-# Copyright (C) 2020 TeamUltroid
-#
-# This file is a part of < https://github.com/TeamUltroid/Ultroid/ >
-# PLease read the GNU Affero General Public License in
-# <https://www.github.com/TeamUltroid/Ultroid/blob/main/LICENSE/>.
+
 
 """
 ✘ Commands Available -
@@ -33,13 +28,13 @@ from . import *
 bot = "@MissRose_bot"
 
 
-@ultroid_cmd(pattern="superfban ?(.*)")
+@Asteroid_cmd(pattern="superfban ?(.*)")
 async def _(event):
     msg = await eor(event, "Starting a Mass-FedBan...")
     if event.reply_to_msg_id:
         previous_message = await event.get_reply_message()
         if previous_message.media:
-            downloaded_file_name = await ultroid.download_media(
+            downloaded_file_name = await Asteroid.download_media(
                 previous_message,
                 "fedlist",
             )
@@ -80,7 +75,7 @@ async def _(event):
     try:
         uid = int(FBAN)
     except ValueError:
-        x = await ultroid(GetFullUserRequest(FBAN))
+        x = await Asyeroid(GetFullUserRequest(FBAN))
         uid = x.user.id
 
     if str(uid) in DEVLIST:
@@ -94,7 +89,7 @@ async def _(event):
     fedList = []
     if not len(fedList):
         for a in range(3):
-            async with ultroid.conversation("@MissRose_bot") as bot_conv:
+            async with Asteroid.conversation("@MissRose_bot") as bot_conv:
                 await bot_conv.send_message("/start")
                 await asyncio.sleep(3)
                 await bot_conv.send_message("/myfeds")
@@ -112,7 +107,7 @@ async def _(event):
                     fedfile = await bot_conv.get_response()
                     await asyncio.sleep(3)
                     if fedfile.media:
-                        downloaded_file_name = await ultroid.download_media(
+                        downloaded_file_name = await Asteroid.download_media(
                             fedfile,
                             "fedlist",
                         )
@@ -154,7 +149,7 @@ async def _(event):
             return
     await msg.edit(f"FBaning in {len(fedList)} feds.")
     try:
-        await ultroid.send_message(chat, f"/start")
+        await Asteroid.send_message(chat, f"/start")
     except BaseException:
         await msg.edit("Specified FBan Group ID is incorrect.")
         return
@@ -166,12 +161,12 @@ async def _(event):
     exCount = 0
     for fed in fedList:
         if udB.get("EXCLUDE_FED") and fed in excludeFed:
-            await ultroid.send_message(chat, f"{fed} Excluded.")
+            await Asteroid.send_message(chat, f"{fed} Excluded.")
             exCount += 1
             continue
-        await ultroid.send_message(chat, f"/joinfed {fed}")
+        await Asteroid.send_message(chat, f"/joinfed {fed}")
         await asyncio.sleep(3)
-        await ultroid.send_message(chat, f"/fban {uid} {REASON}")
+        await Asteroid.send_message(chat, f"/fban {uid} {REASON}")
         await asyncio.sleep(3)
     try:
         os.remove("fedlist")
@@ -182,7 +177,7 @@ async def _(event):
     )
 
 
-@ultroid_cmd(pattern="superunfban ?(.*)")
+@Asteroid_cmd(pattern="superunfban ?(.*)")
 async def _(event):
     msg = await eor(event, "Starting a Mass-UnFedBan...")
     fedList = []
@@ -235,7 +230,7 @@ async def _(event):
         chat = await event.get_chat()
     if not len(fedList):
         for a in range(3):
-            async with ultroid.conversation("@MissRose_bot") as bot_conv:
+            async with Asteroid.conversation("@MissRose_bot") as bot_conv:
                 await bot_conv.send_message("/start")
                 await asyncio.sleep(3)
                 await bot_conv.send_message("/myfeds")
@@ -253,7 +248,7 @@ async def _(event):
                     fedfile = await bot_conv.get_response()
                     await asyncio.sleep(3)
                     if fedfile.media:
-                        downloaded_file_name = await ultroid.download_media(
+                        downloaded_file_name = await Asteroid.download_media(
                             fedfile,
                             "fedlist",
                         )
@@ -295,7 +290,7 @@ async def _(event):
             return
     await msg.edit(f"UnFBaning in {len(fedList)} feds.")
     try:
-        await ultroid.send_message(chat, f"/start")
+        await Asteroid.send_message(chat, f"/start")
     except BaseException:
         await msg.edit("Specified FBan Group ID is incorrect.")
         return
@@ -307,12 +302,12 @@ async def _(event):
     exCount = 0
     for fed in fedList:
         if udB.get("EXCLUDE_FED") and fed in excludeFed:
-            await ultroid.send_message(chat, f"{fed} Excluded.")
+            await Asteroid.send_message(chat, f"{fed} Excluded.")
             exCount += 1
             continue
-        await ultroid.send_message(chat, f"/joinfed {fed}")
+        await Asteroid.send_message(chat, f"/joinfed {fed}")
         await asyncio.sleep(3)
-        await ultroid.send_message(chat, f"/unfban {FBAN} {REASON}")
+        await Asteroid.send_message(chat, f"/unfban {FBAN} {REASON}")
         await asyncio.sleep(3)
     try:
         os.remove("fedlist")
@@ -323,7 +318,7 @@ async def _(event):
     )
 
 
-@ultroid_cmd(pattern="fstat ?(.*)")
+@Asteroid_cmd(pattern="fstat ?(.*)")
 async def _(event):
     ok = await eor(event, "`Checking...`")
     if event.reply_to_msg_id:
@@ -341,7 +336,7 @@ async def _(event):
         )
         return
     else:
-        async with ultroid.conversation(bot) as conv:
+        async with Asteroid.conversation(bot) as conv:
             try:
                 await conv.send_message("/start")
                 await conv.get_response()
@@ -355,7 +350,7 @@ async def _(event):
                     await audio.click(0)
                     await asyncio.sleep(2)
                     audio = await conv.get_response()
-                    await ultroid.send_file(
+                    await Asteroid.send_file(
                         event.chat_id,
                         audio,
                         caption=f"List of feds {user} has been banned in.\n\nCollected using Ultroid.",
@@ -365,22 +360,22 @@ async def _(event):
                 else:
                     okk = await conv.get_edit()
                     await ok.edit(okk.message)
-                await ultroid.send_read_acknowledge(bot)
+                await Asteroid.send_read_acknowledge(bot)
             except YouBlockedUserError:
                 await ok.edit("**Error**\n `Unblock` @MissRose_Bot `and try again!")
 
 
-@ultroid_cmd(pattern="fedinfo ?(.*)")
+@Asteroid_cmd(pattern="fedinfo ?(.*)")
 async def _(event):
     ok = await event.edit("`Extracting information...`")
     sysarg = event.pattern_match.group(1)
-    async with ultroid.conversation(bot) as conv:
+    async with Asteroid.conversation(bot) as conv:
         try:
             await conv.send_message("/start")
             await conv.get_response()
             await conv.send_message("/fedinfo " + sysarg)
             audio = await conv.get_response()
-            await ultroid.send_read_acknowledge(bot)
+            await Asteroid.send_read_acknowledge(bot)
             await ok.edit(audio.text + "\n\nFedInfo Extracted by Ultroid")
         except YouBlockedUserError:
             await ok.edit("**Error**\n `Unblock` @MissRose_Bot `and try again!")
