@@ -1,9 +1,3 @@
-# Ultroid - UserBot
-# Copyright (C) 2020 TeamUltroid
-#
-# This file is a part of < https://github.com/TeamUltroid/Ultroid/ >
-# PLease read the GNU Affero General Public License in
-# <https://www.github.com/TeamUltroid/Ultroid/blob/main/LICENSE/>.
 
 """
 ✘ Commands Available -
@@ -33,7 +27,7 @@ from telethon.tl.types import DocumentAttributeAudio, DocumentAttributeVideo
 from . import *
 
 
-@ultroid_cmd(
+@Asteroid_cmd(
     pattern="dl ?(.*)",
 )
 async def download(event):
@@ -92,7 +86,7 @@ async def download(event):
         await eor(xx, f"Downloaded `{file_name}` in `0 second(s)`")
 
 
-@ultroid_cmd(
+@Asteroid_cmd(
     pattern="ul ?(.*)",
 )
 async def download(event):
@@ -141,7 +135,7 @@ async def download(event):
                         if udB.get("artist"):
                             artist = udB.get("artist")
                         else:
-                            artist = ultroid_bot.first_name
+                            artist = Asteroid_bot.first_name
                     if res.name.endswith(tuple([".mkv", ".mp4", ".avi"])):
                         attributes = [
                             DocumentAttributeVideo(
@@ -264,7 +258,7 @@ async def download(event):
                     size += os.path.getsize(fp)
             c = len(os.listdir(kk))
             await xx.delete()
-            await ultroid_bot.send_message(
+            await Asteroid_bot.send_message(
                 event.chat_id,
                 f"Uploaded Total - `{c}` files of `{humanbytes(size)}` in `{t}`",
             )
