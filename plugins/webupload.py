@@ -1,9 +1,4 @@
-# Ultroid - UserBot
-# Copyright (C) 2020 TeamUltroid
-#
-# This file is a part of < https://github.com/TeamUltroid/Ultroid/ >
-# PLease read the GNU Affero General Public License in
-# <https://www.github.com/TeamUltroid/Ultroid/blob/main/LICENSE/>.
+
 
 """
 ✘ Commands Available -
@@ -21,7 +16,7 @@ from telethon.errors.rpcerrorlist import BotResponseTimeoutError as rep
 from . import *
 
 
-@ultroid_cmd(
+@Asteroid_cmd(
     pattern="webupload",
 )
 async def _(event):
@@ -49,7 +44,7 @@ async def _(event):
         else:
             return await eod(xx, "`Reply to media file`", time=5)
     try:
-        results = await ultroid_bot.inline_query(
+        results = await Asteroid_bot.inline_query(
             asst.me.username,
             f"fl2lnk {file_name}",
         )
