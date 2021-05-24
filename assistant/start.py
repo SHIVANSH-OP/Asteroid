@@ -1,14 +1,8 @@
-# Ultroid - UserBot
-# Copyright (C) 2020 TeamUltroid
-#
-# This file is a part of < https://github.com/TeamUltroid/Ultroid/ >
-# PLease read the GNU Affero General Public License in
-# <https://www.github.com/TeamUltroid/Ultroid/blob/main/LICENSE/>.
 
 from datetime import datetime
 
-from pyUltroid.functions.asst_fns import *
-from pyUltroid.misc._decorators import sed
+from pyAsteroid.functions.asst_fns import *
+from pyAsteroid.misc._decorators import sed
 from telethon import Button, events
 from telethon.utils import get_display_name
 
@@ -22,7 +16,7 @@ Owner_info_msg = f"""
 
 **Message Forwards** - {udB.get("PMBOT")}
 
-__Ultroid {ultroid_version}, powered by @TeamUltroid__
+__Asteroid {Asteroid_version}, powered by @TEAMROYAL__
 """
 
 
@@ -45,11 +39,11 @@ async def assistant(event):
             if udB.get("PMBOT") == "True":
                 ok = "You can contact my master using this bot!!\n\nSend your Message, I will Deliver it To Master."
             await event.reply(
-                f"Hey there [{get_display_name(u)}](tg://user?id={u.id}), this is Ultroid Assistant of [{ultroid_bot.me.first_name}](tg://user?id={ultroid_bot.uid})!\n\n{ok}",
+                f"Hey there [{get_display_name(u)}](tg://user?id={u.id}), this is Asteroid Assistant of [{Asteroid_bot.me.first_name}](tg://user?id={Asteroid_bot.uid})!\n\n{ok}",
                 buttons=[Button.inline("Info.", data="ownerinfo")],
             )
         else:
-            me = f"[{ultroid_bot.me.first_name}](tg://user?id={ultroid_bot.uid})"
+            me = f"[{Asteroid_bot.me.first_name}](tg://user?id={Asteroid_bot.uid})"
             mention = f"[{get_display_name(u)}](tg://user?id={u.id})"
             await event.reply(
                 Redis("STARTMSG").format(me=me, mention=mention),
@@ -69,7 +63,7 @@ async def closet(lol):
 
 @asst_cmd("start ?(.*)")
 @owner
-async def ultroid(event):
+async def Asteroid(event):
     if event.pattern_match.group(1):
         return
     if event.is_group:
@@ -96,7 +90,7 @@ async def ultroid(event):
 # aah, repeat the codes..
 @callback("mainmenu")
 @owner
-async def ultroid(event):
+async def Asteroid(event):
     if event.is_group:
         return
     await event.edit(
@@ -118,7 +112,7 @@ async def ultroid(event):
 @owner
 async def botstat(event):
     ok = len(get_all_users())
-    msg = """Ultroid Assistant - Stats
+    msg = """Asteroid Assistant - Stats
 Total Users - {}""".format(
         ok,
     )
