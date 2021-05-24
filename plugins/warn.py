@@ -1,9 +1,4 @@
-# Ultroid - UserBot
-# Copyright (C) 2020 TeamUltroid
-#
-# This file is a part of < https://github.com/TeamUltroid/Ultroid/ >
-# PLease read the GNU Affero General Public License in
-# <https://www.github.com/TeamUltroid/Ultroid/blob/main/LICENSE/>.
+
 
 """
 ✘ Commands Available
@@ -25,13 +20,13 @@
 
 """
 
-from pyUltroid.functions.warn_db import *
+from pyAsteroid.functions.warn_db import *
 from telethon.utils import get_display_name
 
 from . import *
 
 
-@ultroid_cmd(pattern="warn ?(.*)", groups_only=True, admins_only=True)
+@Asteroid_cmd(pattern="warn ?(.*)", groups_only=True, admins_only=True)
 async def warn(e):
     reply = await e.get_reply_message()
     if len(e.text) > 5:
@@ -46,7 +41,7 @@ async def warn(e):
         try:
             user = e.text.split()[1]
             if user.startswith("@"):
-                ok = await ultroid_bot.get_entity(user)
+                ok = await Asteroid_bot.get_entity(user)
                 user = ok.id
             else:
                 user = int(user)
@@ -71,24 +66,24 @@ async def warn(e):
     if count + 1 >= number:
         if "ban" in action:
             try:
-                await ultroid_bot.edit_permissions(e.chat_id, user, view_messages=False)
+                await Asteroid_bot.edit_permissions(e.chat_id, user, view_messages=False)
             except BaseException:
                 return await eod(e, "`Something Went Wrong.`")
         elif "kick" in action:
             try:
-                await ultroid_bot.kick_participant(e.chat_id, user)
+                await Asteroid_bot.kick_participant(e.chat_id, user)
             except BaseException:
                 return await eod(e, "`Something Went Wrong.`")
         elif "mute" in action:
             try:
-                await ultroid_bot.edit_permissions(
+                await Asteroid_bot.edit_permissions(
                     e.chat_id, user, until_date=None, send_messages=False
                 )
             except BaseException:
                 return await eod(e, "`Something Went Wrong.`")
         add_warn(e.chat_id, user, count + 1, r)
         c, r = warns(e.chat_id, user)
-        ok = await ultroid_bot.get_entity(user)
+        ok = await Asteroid_bot.get_entity(user)
         user = f"[{get_display_name(ok)}](tg://user?id={ok.id})"
         r = r.split("|$|")
         text = f"User {user} Got {action} Due to {count+1} Warns.\n\n"
@@ -97,7 +92,7 @@ async def warn(e):
         await eor(e, text)
         return reset_warn(e.chat_id, ok.id)
     add_warn(e.chat_id, user, count + 1, r)
-    ok = await ultroid_bot.get_entity(user)
+    ok = await Asteroid_bot.get_entity(user)
     user = f"[{get_display_name(ok)}](tg://user?id={ok.id})"
     await eor(
         e,
@@ -105,7 +100,7 @@ async def warn(e):
     )
 
 
-@ultroid_cmd(pattern="resetwarn ?(.*)", groups_only=True, admins_only=True)
+@Asteroid_cmd(pattern="resetwarn ?(.*)", groups_only=True, admins_only=True)
 async def rwarn(e):
     reply = await e.get_reply_message()
     if reply:
@@ -114,19 +109,19 @@ async def rwarn(e):
         try:
             user = e.text.split()[1]
             if user.startswith("@"):
-                ok = await ultroid_bot.get_entity(user)
+                ok = await Asteroid_bot.get_entity(user)
                 user = ok.id
             else:
                 user = int(user)
         except BaseException:
             return await eor(e, "Reply To user")
     reset_warn(e.chat_id, user)
-    ok = await ultroid_bot.get_entity(user)
+    ok = await Asteroid_bot.get_entity(user)
     user = f"[{get_display_name(ok)}](tg://user?id={ok.id})"
     await eor(e, f"Cleared All Warns of {user}.")
 
 
-@ultroid_cmd(pattern="warns ?(.*)", groups_only=True, admins_only=True)
+@Asteroid_cmd(pattern="warns ?(.*)", groups_only=True, admins_only=True)
 async def twarns(e):
     reply = await e.get_reply_message()
     if reply:
@@ -135,7 +130,7 @@ async def twarns(e):
         try:
             user = e.text.split()[1]
             if user.startswith("@"):
-                ok = await ultroid_bot.get_entity(user)
+                ok = await Asteroid_bot.get_entity(user)
                 user = ok.id
             else:
                 user = int(user)
@@ -143,7 +138,7 @@ async def twarns(e):
             return await eod(e, "Reply To A User")
     c, r = warns(e.chat_id, user)
     if c and r:
-        ok = await ultroid_bot.get_entity(user)
+        ok = await Asteroid_bot.get_entity(user)
         user = f"[{get_display_name(ok)}](tg://user?id={ok.id})"
         r = r.split("|$|")
         text = f"User {user} Got {c} Warns.\n\n"
@@ -154,7 +149,7 @@ async def twarns(e):
         await eor(e, "`No Warnings`")
 
 
-@ultroid_cmd(pattern="setwarn ?(.*)")
+@Asteroid_cmd(pattern="setwarn ?(.*)")
 async def warnset(e):
     ok = e.pattern_match.group(1)
     if not ok:
