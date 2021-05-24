@@ -1,9 +1,4 @@
-# Ultroid - UserBot
-# Copyright (C) 2020 TeamUltroid
-#
-# This file is a part of < https://github.com/TeamUltroid/Ultroid/ >
-# PLease read the GNU Affero General Public License in
-# <https://www.github.com/TeamUltroid/Ultroid/blob/main/LICENSE/>.
+
 
 """
 ✘ Commands Available -
@@ -36,7 +31,7 @@
 
 """
 
-from pyUltroid.functions.vc_sudos import add_vcsudo, del_vcsudo, get_vcsudos, is_vcsudo
+from pyAsteroid.functions.vc_sudos import add_vcsudo, del_vcsudo, get_vcsudos, is_vcsudo
 from telethon.tl.functions.channels import GetFullChannelRequest as getchat
 from telethon.tl.functions.phone import CreateGroupCallRequest as startvc
 from telethon.tl.functions.phone import DiscardGroupCallRequest as stopvc
@@ -57,7 +52,7 @@ def user_list(l, n):
         yield l[i : i + n]
 
 
-@ultroid_cmd(
+@Asteroid_cmd(
     pattern="stopvc$",
     admins_only=True,
     groups_only=True,
@@ -71,7 +66,7 @@ async def _(e):
         await eor(e, f"`{str(ex)}`")
 
 
-@ultroid_cmd(
+@Asteroid_cmd(
     pattern="playvc$",
 )
 async def _(e):
@@ -84,7 +79,7 @@ async def _(e):
         await zz.edit(f"Failed {er}\n\n{out}")
 
 
-@ultroid_cmd(
+@Asteroid_cmd(
     pattern="vcinvite$",
     groups_only=True,
 )
@@ -105,7 +100,7 @@ async def _(e):
     await ok.edit(f"`Invited {z} users`")
 
 
-@ultroid_cmd(
+@Asteroid_cmd(
     pattern="startvc$",
     admins_only=True,
     groups_only=True,
@@ -118,7 +113,7 @@ async def _(e):
         await eor(e, f"`{str(ex)}`")
 
 
-@ultroid_cmd(
+@Asteroid_cmd(
     pattern="listvcaccess$",
 )
 async def _(e):
@@ -135,7 +130,7 @@ async def _(e):
     await xx.edit(pp)
 
 
-@ultroid_cmd(
+@Asteroid_cmd(
     pattern="rmvcaccess ?(.*)",
 )
 async def _(e):
@@ -169,7 +164,7 @@ async def _(e):
         return await eod(xx, f"`{str(ex)}`", time=5)
 
 
-@ultroid_cmd(
+@Asteroid_cmd(
     pattern="vcaccess ?(.*)",
 )
 async def _(e):
@@ -205,7 +200,7 @@ async def _(e):
 
 @asst_cmd("exitVc")
 async def evc(e):
-    if e.sender.id == ultroid_bot.uid:
+    if e.sender.id == Asteroid_bot.uid:
         vcdyno("off")
     elif is_sudo(e.sender.id):
         vcdyno("off")
