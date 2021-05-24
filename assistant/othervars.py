@@ -1,9 +1,4 @@
-# Ultroid - UserBot
-# Copyright (C) 2020 TeamUltroid
-#
-# This file is a part of < https://github.com/TeamUltroid/Ultroid/ >
-# PLease read the GNU Affero General Public License in
-# <https://www.github.com/TeamUltroid/Ultroid/blob/main/LICENSE/>.
+
 
 import re
 from os import remove
@@ -16,7 +11,7 @@ from . import *
 
 # --------------------------------------------------------------------#
 telegraph = Telegraph()
-r = telegraph.create_account(short_name="Ultroid")
+r = telegraph.create_account(short_name="Asteroid")
 auth_url = r["auth_url"]
 # --------------------------------------------------------------------#
 
@@ -110,7 +105,7 @@ async def update(eve):
         )
         os.system("git pull"), os.system(
             "pip3.9 install -U -r requirements.txt"
-        ), os.execl(sys.executable, sys.executable, "-m", "pyUltroid")
+        ), os.execl(sys.executable, sys.executable, "-m", "pyAsteroid")
     else:
         try:
             ups_rem.pull(ac_br)
@@ -120,7 +115,7 @@ async def update(eve):
         await eve.edit(
             "`Successfully Updated!\nBot is restarting... Wait for a second!`"
         )
-        execl(sys.executable, sys.executable, "-m", "pyUltroid")
+        execl(sys.executable, sys.executable, "-m", "pyAsteroid")
 
 
 @callback("changes")
@@ -132,15 +127,15 @@ async def changes(okk):
     changelog_str = changelog + f"\n\nClick the below button to update!"
     if len(changelog_str) > 1024:
         await okk.edit(get_string("upd_4"))
-        file = open(f"ultroid_updates.txt", "w+")
+        file = open(f"Asteroid_updates.txt", "w+")
         file.write(tl_chnglog)
         file.close()
         await okk.edit(
             get_string("upd_5"),
-            file="ultroid_updates.txt",
+            file="Asteroid_updates.txt",
             buttons=Button.inline("Update Now", data="updatenow"),
         )
-        remove(f"ultroid_updates.txt")
+        remove(f"Asteroid_updates.txt")
         return
     else:
         await okk.edit(
@@ -196,7 +191,7 @@ async def _(e):
     token_file_data = f.read()
     udB.set("GDRIVE_TOKEN", token_file_data)
     await e.reply(
-        "`Success!\nYou are all set to use Google Drive with Ultroid Userbot.`",
+        "`Success!\nYou are all set to use Google Drive with Asteroid Userbot.`",
         buttons=Button.inline("Main Menu", data="setter"),
     )
 
@@ -215,7 +210,7 @@ async def _(e):
         + "4. Copy link of that folder.\n"
         + "5. Send all characters which is after id= .",
     )
-    async with ultroid_bot.asst.conversation(e.sender_id) as conv:
+    async with Asteroid_bot.asst.conversation(e.sender_id) as conv:
         reply = conv.wait_event(events.NewMessage(from_users=e.sender_id))
         repl = await reply
         udB.set("GDRIVE_FOLDER_ID", repl.text)
@@ -231,7 +226,7 @@ async def _(e):
     if not e.is_private:
         return
     await e.edit("Send your CLIENT SECRET")
-    async with ultroid_bot.asst.conversation(e.sender_id) as conv:
+    async with Asteroid_bot.asst.conversation(e.sender_id) as conv:
         reply = conv.wait_event(events.NewMessage(from_users=e.sender_id))
         repl = await reply
         udB.set("GDRIVE_CLIENT_SECRET", repl.text)
@@ -247,7 +242,7 @@ async def _(e):
     if not e.is_private:
         return
     await e.edit("Send your CLIENT ID ending with .com")
-    async with ultroid_bot.asst.conversation(e.sender_id) as conv:
+    async with Asteroid_bot.asst.conversation(e.sender_id) as conv:
         reply = conv.wait_event(events.NewMessage(from_users=e.sender_id))
         repl = await reply
         if not repl.text.endswith(".com"):
@@ -285,7 +280,7 @@ async def _(e):
 @owner
 async def otvaar(event):
     await event.edit(
-        "Other Variables to set for @TheUltroid:",
+        "Other Variables to set for @TheAsteroid:",
         buttons=[
             [
                 Button.inline("Tᴀɢ Lᴏɢɢᴇʀ", data="taglog"),
@@ -347,7 +342,7 @@ async def pluginch(event):
     name = "Plugin Channel"
     async with event.client.conversation(pru) as conv:
         await conv.send_message(
-            "Send id or username of a channel from where u want to install all plugins\n\nOur Channel~ @ultroidplugins\n\nUse /cancel to cancel.",
+            "Send id or username of a channel from where u want to install all plugins\n\nOur Channel~ @Asteroidplugins\n\nUse /cancel to cancel.",
         )
         response = conv.wait_event(events.NewMessage(chats=pru))
         response = await response
@@ -942,7 +937,7 @@ async def pmofff(event):
 @owner
 async def chbot(event):
     await event.edit(
-        f"From This Feature U can chat with ppls Via ur Assistant Bot.\n[More info](https://t.me/UltroidUpdates/2)",
+        f"From This Feature U can chat with ppls Via ur Assistant Bot.\n[More info](https:AsteroidUpdates/2)",
         buttons=[
             [Button.inline("Cʜᴀᴛ Bᴏᴛ  Oɴ", data="onchbot")],
             [Button.inline("Cʜᴀᴛ Bᴏᴛ  Oғғ", data="ofchbot")],
@@ -1009,7 +1004,7 @@ async def chon(event):
 @owner
 async def vcb(event):
     await event.edit(
-        f"From This Feature U can play songs in group voice chat\n\n[moreinfo](https://t.me/UltroidUpdates/4)",
+        f"From This Feature U can play songs in group voice chat\n\n[moreinfo](https://t.me/AsteroidUpdates/4)",
         buttons=[
             [Button.inline("VC Sᴇssɪᴏɴ", data="vcs")],
             [Button.inline("« Bᴀᴄᴋ", data="setter")],
