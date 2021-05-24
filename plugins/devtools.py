@@ -1,9 +1,4 @@
-# Ultroid - UserBot
-# Copyright (C) 2020 TeamUltroid
-#
-# This file is a part of < https://github.com/TeamUltroid/Ultroid/ >
-# PLease read the GNU Affero General Public License in
-# <https://www.github.com/TeamUltroid/Ultroid/blob/main/LICENSE/>.
+
 
 """
 ✘ Commands Available -
@@ -27,7 +22,7 @@ from carbonnow import Carbon
 from . import *
 
 
-@ultroid_cmd(
+@Asteroid_cmd(
     pattern="sysinfo$",
 )
 async def _(e):
@@ -42,7 +37,7 @@ async def _(e):
     remove("neo.txt")
 
 
-@ultroid_cmd(
+@Asteroid_cmd(
     pattern="bash",
 )
 async def _(event):
@@ -93,7 +88,7 @@ async def _(event):
 p = print  # ignore: pylint
 
 
-@ultroid_cmd(
+@Asteroid_cmd(
     pattern="eval",
 )
 async def _(event):
@@ -148,7 +143,7 @@ async def _(event):
         ultd = final_output.replace("`", "").replace("*", "").replace("_", "")
         with io.BytesIO(str.encode(ultd)) as out_file:
             out_file.name = "eval.txt"
-            await ultroid_bot.send_file(
+            await Asteroid_bot.send_file(
                 event.chat_id,
                 out_file,
                 force_document=True,
