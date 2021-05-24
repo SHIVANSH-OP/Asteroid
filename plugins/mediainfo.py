@@ -1,9 +1,4 @@
-# Ultroid - UserBot
-# Copyright (C) 2020 TeamUltroid
-#
-# This file is a part of < https://github.com/TeamUltroid/Ultroid/ >
-# PLease read the GNU Affero General Public License in
-# <https://www.github.com/TeamUltroid/Ultroid/blob/main/LICENSE/>.
+
 
 """
 ✘ Commands Available -
@@ -19,14 +14,14 @@ from datetime import datetime as dt
 from . import *
 
 
-@ultroid_cmd(pattern="mediainfo$")
+@Asteroid_cmd(pattern="mediainfo$")
 async def mi(e):
     r = await e.get_reply_message()
     if not (r and r.media):
         return await eod(e, "`Reply to any media`")
     xx = mediainfo(r.media)
     murl = r.media.stringify()
-    url = make_html_telegraph("Mediainfo", "Ultroid", f"<code>{murl}</code>")
+    url = make_html_telegraph("Mediainfo", "Asteroid", f"<code>{murl}</code>")
     ee = await eor(e, f"**[{xx}]({url})**\n\n`Loading More...`", link_preview=False)
     taime = time.time()
     if hasattr(r.media, "document"):
@@ -47,9 +42,9 @@ async def mi(e):
         )
         naam = dl.name
     else:
-        naam = await ultroid_bot.download_media(r.media)
+        naam = await Asteroid_bot.download_media(r.media)
     out, er = await bash(f"mediainfo '{naam}' --Output=HTML")
-    urll = make_html_telegraph("Mediainfo", "Ultroid", out)
+    urll = make_html_telegraph("Mediainfo", "Asteroid", out)
     if er:
         return await ee.edit(f"**[{xx}]({url})**", link_preview=False)
     await ee.edit(
