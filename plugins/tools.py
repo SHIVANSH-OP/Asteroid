@@ -1,9 +1,4 @@
-# Ultroid - UserBot
-# Copyright (C) 2020 TeamUltroid
-#
-# This file is a part of < https://github.com/TeamUltroid/Ultroid/ >
-# PLease read the GNU Affero General Public License in
-# <https://www.github.com/TeamUltroid/Ultroid/blob/main/LICENSE/>.
+
 
 """
 ✘ Commands Available -
@@ -53,7 +48,7 @@ from . import *
 from . import humanbytes as hb
 
 
-@ultroid_cmd(
+@Asteroid_cmd(
     pattern="tr",
 )
 async def _(event):
@@ -83,7 +78,7 @@ async def _(event):
         await eod(xx, str(exc), time=10)
 
 
-@ultroid_cmd(
+@Asteroid_cmd(
     pattern="id ?(.*)",
 )
 async def _(event):
@@ -121,7 +116,7 @@ async def _(event):
         await eor(event, "**Current Chat ID:**  `{}`".format(str(event.chat_id)))
 
 
-@ultroid_cmd(
+@Asteroid_cmd(
     pattern="bots ?(.*)",
 )
 async def _(ult):
@@ -140,12 +135,12 @@ async def _(ult):
     else:
         mentions = f"**Bots in **{input_str}: \n"
         try:
-            chat = await ultroid_bot.get_entity(input_str)
+            chat = await Asteroid_bot.get_entity(input_str)
         except Exception as e:
             await eor(ult, str(e))
             return None
     try:
-        async for x in ultroid_bot.iter_participants(
+        async for x in Asteroid_bot.iter_participants(
             chat,
             filter=ChannelParticipantsBots,
         ):
@@ -166,7 +161,7 @@ async def _(ult):
     await eor(ult, mentions)
 
 
-@ultroid_cmd(
+@Asteroid_cmd(
     pattern="hl",
 )
 async def _(ult):
@@ -177,7 +172,7 @@ async def _(ult):
     await eor(ult, "[ㅤㅤㅤㅤㅤㅤㅤ](" + input + ")", link_preview=False)
 
 
-@ultroid_cmd(
+@Asteroid_cmd(
     pattern="circle$",
 )
 async def _(e):
@@ -196,7 +191,7 @@ async def _(e):
             thumb = "img.png"
             os.remove(bbbb)
         except TypeError:
-            bbbb = "resources/extras/ultroid.jpg"
+            bbbb = "resources/extras/Asteroid.jpg"
             im = cv2.imread(bbbb)
             dsize = (320, 320)
             output = cv2.resize(im, dsize, interpolation=cv2.INTER_AREA)
@@ -242,7 +237,7 @@ async def _(e):
             e.chat_id,
             c,
             video_note=True,
-            thumb="resources/extras/ultroid.jpg",
+            thumb="resources/extras/Asteroid.jpg",
             reply_to=a,
         )
         await z.delete()
@@ -251,7 +246,7 @@ async def _(e):
         return await eor(e, "**Reply to a gif or audio file only**")
 
 
-@ultroid_cmd(
+@Asteroid_cmd(
     pattern="ls ?(.*)",
 )
 async def _(e):
@@ -358,7 +353,7 @@ async def _(e):
     await eor(e, text)
 
 
-@ultroid_cmd(
+@Asteroid_cmd(
     pattern="sg ?(.*)",
 )
 async def lastname(steal):
@@ -375,12 +370,12 @@ async def lastname(steal):
         user_id = message.sender.id
     chat = "@SangMataInfo_bot"
     id = f"/search_id {user_id}"
-    check = await ultroid_bot.get_entity(user_id)
+    check = await Asteroid_bot.get_entity(user_id)
     if not isinstance(check, User) or check.bot:
         return await eor(steal, "Reply to Actual User's Message !")
     lol = await eor(steal, "`Processing !...`")
     try:
-        async with ultroid_bot.conversation(chat) as conv:
+        async with Asteroid_bot.conversation(chat) as conv:
             try:
                 msg = await conv.send_message(id)
                 response = await conv.get_response()
