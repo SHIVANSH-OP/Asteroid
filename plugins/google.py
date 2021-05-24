@@ -1,9 +1,4 @@
-# Ultroid - UserBot
-# Copyright (C) 2020 TeamUltroid
-#
-# This file is a part of < https://github.com/TeamUltroid/Ultroid/ >
-# PLease read the GNU Affero General Public License in
-# <https://www.github.com/TeamUltroid/Ultroid/blob/main/LICENSE/>.
+
 
 """
 ✘ Commands Available -
@@ -33,7 +28,7 @@ from strings import get_string
 from . import *
 
 
-@ultroid_cmd(pattern="google ?(.*)")
+@Asteroid_cmd(pattern="google ?(.*)")
 async def google(event):
     inp = event.pattern_match.group(1)
     if not inp:
@@ -55,12 +50,12 @@ async def google(event):
     for bkl in range(0, len(omk), 4095):
         opn.append(omk[bkl : bkl + 4095])
     for bc in opn:
-        await ultroid_bot.send_message(event.chat_id, bc, link_preview=False)
+        await Asteroid_bot.send_message(event.chat_id, bc, link_preview=False)
     await x.delete()
     opn.clear()
 
 
-@ultroid_cmd(pattern="img ?(.*)")
+@Asteroid_cmd(pattern="img ?(.*)")
 async def goimg(event):
     query = event.pattern_match.group(1)
     if not query:
@@ -88,7 +83,7 @@ async def goimg(event):
     await nn.delete()
 
 
-@ultroid_cmd(pattern="reverse")
+@Asteroid_cmd(pattern="reverse")
 async def reverse(event):
     reply = await event.get_reply_message()
     if not reply:
