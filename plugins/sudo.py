@@ -1,9 +1,4 @@
-# Ultroid - UserBot
-# Copyright (C) 2020 TeamUltroid
-#
-# This file is a part of < https://github.com/TeamUltroid/Ultroid/ >
-# PLease read the GNU Affero General Public License in
-# <https://www.github.com/TeamUltroid/Ultroid/blob/main/LICENSE/>.
+
 
 """
 ✘ Commands Available -
@@ -19,12 +14,12 @@
 """
 
 
-from pyUltroid.misc._decorators import sed
+from pyAsteroid.misc._decorators import sed
 
 from . import *
 
 
-@ultroid_cmd(
+@Asteroid_cmd(
     pattern="addsudo ?(.*)",
 )
 async def _(ult):
@@ -36,7 +31,7 @@ async def _(ult):
         except BaseException:
             pass
     else:
-        if ult.sender_id != ultroid_bot.uid:
+        if ult.sender_id != Asteroid_bot.uid:
             return await eod(ult, "`Sudo users can't add new sudos!`", time=10)
     ok = await eor(ult, "`Updating SUDO Users List ...`")
     if ult.reply_to_msg_id:
@@ -45,7 +40,7 @@ async def _(ult):
         name = (await ult.client.get_entity(int(id))).first_name
         sed.append(id)
         mmm = ""
-        if id == ultroid_bot.me.id:
+        if id == Asteroid_bot.me.id:
             mmm += "You cant add yourself as Sudo User..."
         elif is_sudo(id):
             mmm += f"[{name}](tg://user?id={id}) `is already a SUDO User ...`"
@@ -64,7 +59,7 @@ async def _(ult):
             name = ""
         sed.append(id)
         mmm = ""
-        if id == ultroid_bot.me.id:
+        if id == Asteroid_bot.me.id:
             mmm += "You cant add yourself as Sudo User..."
         elif is_sudo(id):
             if name != "":
@@ -84,7 +79,7 @@ async def _(ult):
         return await eod(ok, "`Reply to a msg or add it's id/username.`", time=5)
 
 
-@ultroid_cmd(
+@Asteroid_cmd(
     pattern="delsudo ?(.*)",
 )
 async def _(ult):
@@ -100,7 +95,7 @@ async def _(ult):
         except BaseException:
             pass
     else:
-        if ult.sender_id != ultroid_bot.uid:
+        if ult.sender_id != Asteroid_bot.uid:
             return await eor(ult, "You are sudo user, You cant add other sudo user.")
     ok = await eor(ult, "`Updating SUDO Users List ...`")
     if ult.reply_to_msg_id:
@@ -140,7 +135,7 @@ async def _(ult):
         await eod(ok, mmm, time=5)
 
 
-@ultroid_cmd(
+@Asteroid_cmd(
     pattern="listsudo$",
 )
 async def _(ult):
@@ -161,7 +156,7 @@ async def _(ult):
             msg += f"• `{i}` -> Invalid User\n"
     m = udB.get("SUDO") if udB.get("SUDO") else "False"
     if m == "False":
-        m = "[False](https://telegra.ph/Ultroid-04-06)"
+        m = "[False](https://telegra.ph/Asteroid-04-06)"
     return await ok.edit(
         f"**SUDO MODE : {m}\n\nList of SUDO Users :**\n{msg}", link_preview=False
     )
