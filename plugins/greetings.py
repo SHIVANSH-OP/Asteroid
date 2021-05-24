@@ -1,9 +1,4 @@
-# Ultroid - UserBot
-# Copyright (C) 2020 TeamUltroid
-#
-# This file is a part of < https://github.com/TeamUltroid/Ultroid/ >
-# PLease read the GNU Affero General Public License in
-# <https://www.github.com/TeamUltroid/Ultroid/blob/main/LICENSE/>.
+
 
 """
 ✘ Commands Available -
@@ -39,7 +34,7 @@ from . import *
 Note = "\n\nNote: `{mention}`, `{group}`, `{count}`, `{name}`, `{fullname}`, `{username}`, `{userid}` can be used as formatting parameters.\n\n"
 
 
-@ultroid_cmd(pattern="setwelcome")
+@Asteroid_cmd(pattern="setwelcome")
 async def setwel(event):
     x = await eor(event, get_string("com_1"))
     r = await event.get_reply_message()
@@ -74,7 +69,7 @@ async def setwel(event):
         await eod(x, "`Reply to message which u want to set as welcome`")
 
 
-@ultroid_cmd(pattern="clearwelcome$")
+@Asteroid_cmd(pattern="clearwelcome$")
 async def clearwel(event):
     if not get_welcome(event.chat_id):
         await eod(event, "`No welcome was set!`", time=5)
@@ -82,7 +77,7 @@ async def clearwel(event):
     await eod(event, "`Welcome Note Deleted`")
 
 
-@ultroid_cmd(pattern="getwelcome$")
+@Asteroid_cmd(pattern="getwelcome$")
 async def listwel(event):
     wel = get_welcome(event.chat_id)
     if not wel:
@@ -93,7 +88,7 @@ async def listwel(event):
     await event.delete()
 
 
-@ultroid_bot.on(events.ChatAction())
+@Asteroid_bot.on(events.ChatAction())
 async def _(event):
     wel = get_welcome(event.chat_id)
     if wel:
@@ -135,7 +130,7 @@ async def _(event):
                 await event.reply(file=med)
 
 
-@ultroid_cmd(pattern="setgoodbye")
+@Asteroid_cmd(pattern="setgoodbye")
 async def setgb(event):
     x = await eor(event, get_string("com_1"))
     r = await event.get_reply_message()
@@ -170,7 +165,7 @@ async def setgb(event):
         await eod(x, "`Reply to message which u want to set as goodbye`")
 
 
-@ultroid_cmd(pattern="cleargoodbye$")
+@Asteroid_cmd(pattern="cleargoodbye$")
 async def clearwgb(event):
     if not get_goodbye(event.chat_id):
         await eod(event, "`No goodbye was set!`", time=5)
@@ -178,7 +173,7 @@ async def clearwgb(event):
     await eod(event, "`Goodbye Note Deleted`")
 
 
-@ultroid_cmd(pattern="getgoodbye$")
+@Asteroid_cmd(pattern="getgoodbye$")
 async def listgd(event):
     wel = get_goodbye(event.chat_id)
     if not wel:
@@ -189,7 +184,7 @@ async def listgd(event):
     await event.delete()
 
 
-@ultroid_bot.on(events.ChatAction())
+@Asteroid_bot.on(events.ChatAction())
 async def _(event):
     wel = get_goodbye(event.chat_id)
     if wel:
