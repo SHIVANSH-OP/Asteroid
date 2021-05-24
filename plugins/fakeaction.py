@@ -1,9 +1,4 @@
-# Ultroid - UserBot
-# Copyright (C) 2020 TeamUltroid
-#
-# This file is a part of < https://github.com/TeamUltroid/Ultroid/ >
-# PLease read the GNU Affero General Public License in
-# <https://www.github.com/TeamUltroid/Ultroid/blob/main/LICENSE/>.
+
 
 """
 ✘ Commands Available -
@@ -24,7 +19,7 @@
 from . import *
 
 
-@ultroid_cmd(pattern="ftyping ?(.*)")
+@Asteroid_cmd(pattern="ftyping ?(.*)")
 async def _(e):
     t = e.pattern_match.group(1)
     if not (t or t.isdigit()):
@@ -42,7 +37,7 @@ async def _(e):
         await asyncio.sleep(t)
 
 
-@ultroid_cmd(pattern="faudio ?(.*)")
+@Asteroid_cmd(pattern="faudio ?(.*)")
 async def _(e):
     t = e.pattern_match.group(1)
     if not (t or t.isdigit()):
@@ -60,7 +55,7 @@ async def _(e):
         await asyncio.sleep(t)
 
 
-@ultroid_cmd(pattern="fvideo ?(.*)")
+@Asteroid_cmd(pattern="fvideo ?(.*)")
 async def _(e):
     t = e.pattern_match.group(1)
     if not (t or t.isdigit()):
@@ -78,7 +73,7 @@ async def _(e):
         await asyncio.sleep(t)
 
 
-@ultroid_cmd(pattern="fgame ?(.*)")
+@Asteroid_cmd(pattern="fgame ?(.*)")
 async def _(e):
     t = e.pattern_match.group(1)
     if not (t or t.isdigit()):
