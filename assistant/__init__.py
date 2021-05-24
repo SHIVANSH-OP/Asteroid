@@ -1,19 +1,14 @@
-# Ultroid - UserBot
-# Copyright (C) 2020 TeamUltroid
-#
-# This file is a part of < https://github.com/TeamUltroid/Ultroid/ >
-# PLease read the GNU Affero General Public License in
-# <https://www.github.com/TeamUltroid/Ultroid/blob/main/LICENSE/>.
 
-from pyUltroid import *
-from pyUltroid.dB.database import Var
-from pyUltroid.functions.all import *
+
+from pyAsteroid import *
+from pyAsteroid.dB.database import Var
+from pyAsteroid.functions.all import *
 from telethon import Button, custom
 
 from strings import get_languages, get_string
 
-OWNER_NAME = ultroid_bot.me.first_name
-OWNER_ID = ultroid_bot.me.id
+OWNER_NAME = Asteroid_bot.me.first_name
+OWNER_ID = Asteroid_bot.me.id
 
 
 async def setit(event, name, value):
