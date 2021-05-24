@@ -1,9 +1,4 @@
-# Ultroid - UserBot
-# Copyright (C) 2020 TeamUltroid
-#
-# This file is a part of < https://github.com/TeamUltroid/Ultroid/ >
-# PLease read the GNU Affero General Public License in
-# <https://www.github.com/TeamUltroid/Ultroid/blob/main/LICENSE/>.
+.
 
 """
 ✘ Commands Available -
@@ -19,7 +14,7 @@ from datetime import datetime
 from . import *
 
 
-@ultroid_cmd(pattern="megadl ?(.*)")
+@Asteroid_cmd(pattern="megadl ?(.*)")
 async def _(e):
     link = e.pattern_match.group(1)
     if not os.path.isdir("mega"):
@@ -49,12 +44,12 @@ async def _(e):
         for kk in ok:
             try:
                 res = await uploader(kk, kk, tt, xx, "Uploading...")
-                await ultroid_bot.send_file(
+                await Asteroid_bot.send_file(
                     e.chat_id,
                     res,
                     caption="`" + kk.split("/")[-1] + "`",
                     force_document=True,
-                    thumb="resources/extras/ultroid.jpg",
+                    thumb="resources/extras/Asteroid.jpg",
                 )
                 c += 1
             except Exception as er:
@@ -67,7 +62,7 @@ async def _(e):
                 fp = os.path.join(path, f)
                 size += os.path.getsize(fp)
         await xx.delete()
-        await ultroid_bot.send_message(
+        await Asteroid_bot.send_message(
             e.chat_id,
             f"Downloaded And Uploaded Total - `{c}` files of `{humanbytes(size)}` in `{t}`",
         )
