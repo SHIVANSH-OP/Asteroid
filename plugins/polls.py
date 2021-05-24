@@ -1,9 +1,4 @@
-# Ultroid - UserBot
-# Copyright (C) 2020 TeamUltroid
-#
-# This file is a part of < https://github.com/TeamUltroid/Ultroid/ >
-# PLease read the GNU Affero General Public License in
-# <https://www.github.com/TeamUltroid/Ultroid/blob/main/LICENSE/>.
+
 
 """
 ✘ Commands Available -
@@ -25,7 +20,7 @@ from telethon.tl.types import InputMediaPoll, Poll, PollAnswer
 from . import *
 
 
-@ultroid_cmd(
+@Asteroid_cmd(
     pattern="poll ?(.*)",
     groups_only=True,
 )
@@ -61,7 +56,7 @@ async def uri_poll(e):
     OUT = []
     for on in range(len(option)):
         OUT.append(PollAnswer(option[on], str(on).encode()))
-    await ultroid_bot.send_file(
+    await Asteroid_bot.send_file(
         e.chat_id,
         InputMediaPoll(
             Poll(20, ques, OUT, multiple_choice=mpp, public_voters=publ, quiz=quizo),
