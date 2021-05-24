@@ -1,9 +1,4 @@
-# Ultroid - UserBot
-# Copyright (C) 2020 TeamUltroid
-#
-# This file is a part of < https://github.com/TeamUltroid/Ultroid/ >
-# PLease read the GNU Affero General Public License in
-# <https://www.github.com/TeamUltroid/Ultroid/blob/main/LICENSE/>.
+
 
 
 import asyncio
@@ -11,7 +6,7 @@ import os
 import re
 import time
 
-from pyUltroid.functions.all import *
+from pyAsteroid.functions.all import *
 from telethon import Button
 from telethon.errors import UserNotParticipantError
 from telethon.tl.types import DocumentAttributeAudio
@@ -130,8 +125,8 @@ async def _(sur):
         )
         MSG = f"**{ytdl_data['title']}** Uploaded Successfully !"
         chat = sur.chat_id
-        whome = ultroid_bot
-        if sur.is_private and sur.sender_id != ultroid_bot.uid:
+        whome = Asteroid_bot
+        if sur.is_private and sur.sender_id != Asteroid_bot.uid:
             chat = sur.sender_id
             whome = asst
             MSG += f"\nGet at {asst.me.username}"
@@ -213,8 +208,8 @@ async def _(fuk):
         )
         MSG = f"**{ytdl_data['title']}** Uploaded Successfully !"
         chat = fuk.chat_id
-        whome = ultroid_bot
-        if event.is_private and event.sender_id != ultroid_bot.uid:
+        whome = Asteroid_bot
+        if event.is_private and event.sender_id != Asteroid_bot.uid:
             chat = fuk.sender_id
             whome = asst
             MSG += f"\nGet at {asst.me.username}"
