@@ -1,9 +1,4 @@
-# Ultroid - UserBot
-# Copyright (C) 2020 TeamUltroid
-#
-# This file is a part of < https://github.com/TeamUltroid/Ultroid/ >
-# PLease read the GNU Affero General Public License in
-# <https://www.github.com/TeamUltroid/Ultroid/blob/main/LICENSE/>.
+
 
 """
 ✘ Commands Available -
@@ -43,7 +38,7 @@ if not os.path.isdir("pdf"):
     os.mkdir("pdf")
 
 
-@ultroid_cmd(
+@Asteroid_cmd(
     pattern="pdf ?(.*)",
 )
 async def pdfseimg(event):
@@ -96,7 +91,7 @@ async def pdfseimg(event):
         os.remove("ult.png")
 
 
-@ultroid_cmd(
+@Asteroid_cmd(
     pattern="pdtext ?(.*)",
 )
 async def pdfsetxt(event):
@@ -168,7 +163,7 @@ async def pdfsetxt(event):
         os.remove(dl)
 
 
-@ultroid_cmd(
+@Asteroid_cmd(
     pattern="pdscan ?(.*)",
 )
 async def imgscan(event):
@@ -225,7 +220,7 @@ async def imgscan(event):
     os.remove(scann)
 
 
-@ultroid_cmd(
+@Asteroid_cmd(
     pattern="pdsave ?(.*)",
 )
 async def savepdf(event):
@@ -283,7 +278,7 @@ async def savepdf(event):
         os.remove("o.png")
     elif ultt.endswith(".pdf"):
         a = dani_ck("pdf/scan.pdf")
-        await ultroid_bot.download_media(ok, a)
+        await Asteroid_bot.download_media(ok, a)
         await eor(
             event,
             f"Done, Now Reply Another Image/pdf if completed then use {hndlr}pdsend to merge nd send all as pdf",
@@ -293,7 +288,7 @@ async def savepdf(event):
     os.remove(ultt)
 
 
-@ultroid_cmd(
+@Asteroid_cmd(
     pattern="pdsend ?(.*)",
 )
 async def sendpdf(event):
