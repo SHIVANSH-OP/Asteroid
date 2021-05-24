@@ -1,9 +1,4 @@
-# Ultroid - UserBot
-# Copyright (C) 2020 TeamUltroid
-#
-# This file is a part of < https://github.com/TeamUltroid/Ultroid/ >
-# PLease read the GNU Affero General Public License in
-# <https://www.github.com/TeamUltroid/Ultroid/blob/main/LICENSE/>.
+
 
 """
 ✘ Commands Available -
@@ -23,7 +18,7 @@ from telethon.tl.types import DocumentAttributeAudio
 from . import *
 
 
-@ultroid_cmd(pattern="saavn ?(.*)")
+@Asteroid_cmd(pattern="saavn ?(.*)")
 async def siesace(e):
     song = e.pattern_match.group(1)
     if not song:
@@ -46,7 +41,7 @@ async def siesace(e):
     okk = await uploader(
         title + ".mp3", title + ".mp3", hmm, lol, "Uploading " + title + "..."
     )
-    await ultroid_bot.send_file(
+    await Asteroid_bot.send_file(
         e.chat_id,
         okk,
         caption="`" + title + "`" + "\n`From Saavn`",
