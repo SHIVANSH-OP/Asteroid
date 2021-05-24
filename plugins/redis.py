@@ -1,9 +1,4 @@
-# Ultroid - UserBot
-# Copyright (C) 2020 TeamUltroid
-#
-# This file is a part of < https://github.com/TeamUltroid/Ultroid/ >
-# PLease read the GNU Affero General Public License in
-# <https://www.github.com/TeamUltroid/Ultroid/blob/main/LICENSE/>.
+
 
 """
 ✘ Commands Available -
@@ -14,7 +9,7 @@
     Redis Set Value.
     e.g :
     `{i}setredis hi there`
-    `{i}setredis hi there | ultroid here`
+    `{i}setredis hi there | Asteroid here`
 
 • `{i}delredis key`
     Delete Key from Redis DB
@@ -28,7 +23,7 @@ import re
 from . import *
 
 
-@ultroid_cmd(
+@Asteroid_cmd(
     pattern="setredis ?(.*)",
 )
 async def _(ult):
@@ -51,7 +46,7 @@ async def _(ult):
         await ok.edit("`Something Went Wrong`")
 
 
-@ultroid_cmd(
+@Asteroid_cmd(
     pattern="delredis ?(.*)",
 )
 async def _(ult):
@@ -67,7 +62,7 @@ async def _(ult):
         await ok.edit("`Something Went Wrong`")
 
 
-@ultroid_cmd(
+@Asteroid_cmd(
     pattern="renredis ?(.*)",
 )
 async def _(ult):
