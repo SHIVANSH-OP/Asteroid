@@ -1,9 +1,4 @@
-# Ultroid - UserBot
-# Copyright (C) 2020 TeamUltroid
-#
-# This file is a part of < https://github.com/TeamUltroid/Ultroid/ >
-# PLease read the GNU Affero General Public License in
-# <https://www.github.com/TeamUltroid/Ultroid/blob/main/LICENSE/>.
+
 
 
 """
@@ -37,7 +32,7 @@ from . import *
 TOKEN_FILE = "resources/auths/auth_token.txt"
 
 
-@ultroid_cmd(
+@Asteroid_cmd(
     pattern="listdrive$",
 )
 async def files(event):
@@ -47,7 +42,7 @@ async def files(event):
     await eor(event, list_files(http))
 
 
-@ultroid_cmd(
+@Asteroid_cmd(
     pattern="ugdrive ?(.*)",
 )
 async def _(event):
@@ -113,7 +108,7 @@ async def _(event):
         return await eod(mone, "`File Not found in local server.`", time=10)
 
 
-@ultroid_cmd(
+@Asteroid_cmd(
     pattern="drivesearch ?(.*)",
 )
 async def sch(event):
@@ -136,7 +131,7 @@ async def sch(event):
         return await a.edit(str(ex))
 
 
-@ultroid_cmd(
+@Asteroid_cmd(
     pattern="udir ?(.*)",
 )
 async def _(event):
@@ -158,7 +153,7 @@ async def _(event):
         return await eod(event, f"Directory {input_str} does not seem to exist", time=5)
 
 
-@ultroid_cmd(
+@Asteroid_cmd(
     pattern="gfolder$",
 )
 async def _(event):
