@@ -21,7 +21,7 @@ def start():
     print("Welcome to Asteroid, lets start setting up!\n\n")
     print("Cloning the repository...\n\n")
     try:
-        os.system("rm -rf Ultroid")
+        os.system("rm -rf Asteroid")
     except BaseException:
         pass
     os.system("git clone https://github.com/TEAMROYAL/Asteroid")
