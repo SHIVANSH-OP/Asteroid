@@ -1,9 +1,4 @@
-# Ultroid - UserBot
-# Copyright (C) 2020 TeamUltroid
-#
-# This file is a part of < https://github.com/TeamUltroid/Ultroid/ >
-# PLease read the GNU Affero General Public License in
-# <https://www.github.com/TeamUltroid/Ultroid/blob/main/LICENSE/>.
+
 
 """
 ✘ Commands Available -
@@ -21,23 +16,23 @@ from PIL import Image
 from . import *
 
 
-@ultroid_cmd(pattern="size$")
+@Asteroid_cmd(pattern="size$")
 async def size(e):
     r = await e.get_reply_message()
     if not (r and r.media):
         return await eor(e, "`Reply To image`")
     k = await eor(e, "`Processing...`")
     if hasattr(r.media, "document"):
-        img = await ultroid_bot.download_media(r, thumb=-1)
+        img = await Asteroid_bot.download_media(r, thumb=-1)
     else:
-        img = await ultroid_bot.download_media(r.media)
+        img = await Asteroid_bot.download_media(r.media)
     im = Image.open(img)
     x, y = im.size
     await k.edit(f"Dimension Of This Image Is\n`{x} : {y}`")
     os.remove(img)
 
 
-@ultroid_cmd(pattern="resize ?(.*)")
+@Asteroid_cmd(pattern="resize ?(.*)")
 async def size(e):
     r = await e.get_reply_message()
     if not (r and r.media):
@@ -47,9 +42,9 @@ async def size(e):
         return await eod(f"Give Some Size To Resize, Like `{HNDLR}resize 720 1080` ")
     k = await eor(e, "`Processing...`")
     if hasattr(r.media, "document"):
-        img = await ultroid_bot.download_media(r, thumb=-1)
+        img = await Asteroid_bot.download_media(r, thumb=-1)
     else:
-        img = await ultroid_bot.download_media(r.media)
+        img = await Asteroid_bot.download_media(r.media)
     sz = sz.split()
     if not len(sz) == 2:
         return await eod(f"Give Some Size To Resize, Like `{HNDLR}resize 720 1080` ")
@@ -57,7 +52,7 @@ async def size(e):
     im = Image.open(img)
     ok = im.resize((x, y))
     ok.save(img, format="PNG", optimize=True)
-    await ultroid_bot.send_file(e.chat_id, img)
+    await Asteroid_bot.send_file(e.chat_id, img)
     os.remove(img)
     await k.delete()
 
