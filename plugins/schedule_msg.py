@@ -1,9 +1,4 @@
-# Ultroid - UserBot
-# Copyright (C) 2020 TeamUltroid
-#
-# This file is a part of < https://github.com/TeamUltroid/Ultroid/ >
-# PLease read the GNU Affero General Public License in
-# <https://www.github.com/TeamUltroid/Ultroid/blob/main/LICENSE/>.
+
 
 """
 ✘ Commands Available -
@@ -19,7 +14,7 @@ from datetime import timedelta
 from . import *
 
 
-@ultroid_cmd(pattern="schedule ?(.*)")
+@Asteroid_cmd(pattern="schedule ?(.*)")
 async def _(e):
     x = e.pattern_match.group(1)
     xx = await e.get_reply_message()
@@ -27,14 +22,14 @@ async def _(e):
         y = x.split(" ")[-1]
         k = x.replace(y, "")
         if y.isdigit():
-            await ultroid_bot.send_message(
+            await Asteroid_bot.send_message(
                 e.chat_id, k, schedule=timedelta(seconds=int(y))
             )
             await eod(e, "`Scheduled msg Succesfully`")
         else:
             try:
                 z = await ban_time(e, y)
-                await ultroid_bot.send_message(e.chat_id, k, schedule=z)
+                await Asteroid_bot.send_message(e.chat_id, k, schedule=z)
                 await eod(e, "`Scheduled msg Succesfully`")
             except BaseException:
                 await eod(e, "`Incorrect Format`")
@@ -47,7 +42,7 @@ async def _(e):
         else:
             try:
                 z = await ban_time(e, x)
-                await ultroid_bot.send_message(e.chat_id, xx, schedule=z)
+                await Asteroid_bot.send_message(e.chat_id, xx, schedule=z)
                 await eod(e, "`Scheduled msg Succesfully`")
             except BaseException:
                 await eod(e, "`Incorrect Format`")
