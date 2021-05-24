@@ -19,7 +19,7 @@ from youtube_dl import YoutubeDL
 from . import *
 
 
-@ultroid_cmd(pattern="yt(a|v|sa|sv) ?(.*)")
+@Asteroid_cmd(pattern="yt(a|v|sa|sv) ?(.*)")
 async def download_from_youtube_(event):
     opt = event.pattern_match.group(1)
     if opt == "a":
