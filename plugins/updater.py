@@ -1,9 +1,4 @@
-# Ultroid - UserBot
-# Copyright (C) 2020 TeamUltroid
-#
-# This file is a part of < https://github.com/TeamUltroid/Ultroid/ >
-# PLease read the GNU Affero General Public License in
-# <https://www.github.com/TeamUltroid/Ultroid/blob/main/LICENSE/>.
+
 
 """
 ✘ Commands Available -
@@ -17,19 +12,19 @@ from telethon.tl.functions.channels import ExportMessageLinkRequest as GetLink
 from . import *
 
 
-@ultroid_cmd(pattern="update$")
+@Asteroid_cmd(pattern="update$")
 async def _(e):
     m = await updater()
     branch = (Repo.init()).active_branch
     if m:
-        x = await ultroid_bot.asst.send_file(
+        x = await Asteroid_bot.asst.send_file(
             int(udB.get("LOG_CHANNEL")),
             "resources/extras/inline.jpg",
             caption="• **Update Available** •",
             force_document=False,
             buttons=Button.inline("Changelogs", data="changes"),
         )
-        Link = (await ultroid_bot(GetLink(x.peer_id.channel_id, x.id))).link
+        Link = (await Asteroid_bot(GetLink(x.peer_id.channel_id, x.id))).link
         await eor(
             e,
             f'<strong><a href="{Link}">[ChangeLogs]</a></strong>',
@@ -39,7 +34,7 @@ async def _(e):
     else:
         await eor(
             e,
-            f'<code>Your BOT is </code><strong>up-to-date</strong><code> with </code><strong><a href="https://github.com/TeamUltroid/Ultroid/tree/{branch}">[{branch}]</a></strong>',
+            f'<code>Your BOT is </code><strong>up-to-date</strong><code> with </code><strong><a href="https://github.com/TEAMROYAL/Asteroid/tree/{branch}">[{branch}]</a></strong>',
             parse_mode="html",
             link_preview=False,
         )
@@ -49,7 +44,7 @@ async def _(e):
 @owner
 async def updava(event):
     await event.delete()
-    await ultroid_bot.asst.send_file(
+    await Asteroid_bot.asst.send_file(
         int(udB.get("LOG_CHANNEL")),
         "resources/extras/inline.jpg",
         caption="• **Update Available** •",
