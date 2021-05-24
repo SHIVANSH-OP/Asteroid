@@ -1,9 +1,4 @@
-# Ultroid - UserBot
-# Copyright (C) 2020 TeamUltroid
-#
-# This file is a part of < https://github.com/TeamUltroid/Ultroid/ >
-# PLease read the GNU Affero General Public License in
-# <https://www.github.com/TeamUltroid/Ultroid/blob/main/LICENSE/>.
+
 
 """
 
@@ -19,7 +14,7 @@ import os
 from . import *
 
 
-@ultroid_cmd(pattern="glitch$")
+@Asteroid_cmd(pattern="glitch$")
 async def _(e):
     reply = await e.get_reply_message()
     if not (reply and reply.media):
@@ -31,7 +26,7 @@ async def _(e):
     ok = await bot.download_media(reply.media)
     cmd = f"glitch_me gif --line_count 200 -f 10 -d 50 '{ok}' ult.gif"
     stdout, stderr = await bash(cmd)
-    await ultroid_bot.send_file(
+    await Asteroid_bot.send_file(
         e.chat_id, "ult.gif", force_document=False, reply_to=reply
     )
     await xx.delete()
