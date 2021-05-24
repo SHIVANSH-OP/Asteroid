@@ -1,9 +1,3 @@
-# Ultroid - UserBot
-# Copyright (C) 2020 TeamUltroid
-#
-# This file is a part of < https://github.com/TeamUltroid/Ultroid/ >
-# PLease read the GNU Affero General Public License in
-# <https://www.github.com/TeamUltroid/Ultroid/blob/main/LICENSE/>.
 
 """
 ✘ Commands Available
@@ -31,7 +25,7 @@ from datetime import datetime as dt
 from . import *
 
 
-@ultroid_cmd(pattern="bwgif$")
+@Asteroid_cmd(pattern="bwgif$")
 async def igif(e):
     a = await e.get_reply_message()
     if not (a and a.media):
@@ -40,7 +34,7 @@ async def igif(e):
     if "gif" not in wut:
         return await eod(e, "`Reply To Gif Only`")
     xx = await eor(e, "`Processing...`")
-    z = await ultroid_bot.download_media(a.media)
+    z = await Asteroid_bot.download_media(a.media)
     try:
         await bash(f'ffmpeg -i "{z}" -vf format=gray ult.gif -y')
         await e.client.send_file(e.chat_id, "ult.gif", support_stream=True)
@@ -51,7 +45,7 @@ async def igif(e):
         LOGS.info(er)
 
 
-@ultroid_cmd(pattern="invertgif$")
+@Asteroid_cmd(pattern="invertgif$")
 async def igif(e):
     a = await e.get_reply_message()
     if not (a and a.media):
@@ -73,7 +67,7 @@ async def igif(e):
         LOGS.info(er)
 
 
-@ultroid_cmd(pattern="gif ?(.*)")
+@Asteroid_cmd(pattern="gif ?(.*)")
 async def gifs(ult):
     get = ult.pattern_match.group(1)
     xx = random.randint(0, 5)
@@ -86,7 +80,7 @@ async def gifs(ult):
     if not get:
         return await eor(ult, "`{i}gif <query>`")
     m = await eor(ult, "`Searching gif ...`")
-    gifs = await ultroid_bot.inline_query("gif", get)
+    gifs = await Asteroid_bot.inline_query("gif", get)
     if not n:
         await gifs[xx].click(
             ult.chat.id, reply_to=ult.reply_to_msg_id, silent=True, hide_via=True
@@ -99,7 +93,7 @@ async def gifs(ult):
     await m.delete()
 
 
-@ultroid_cmd(pattern="vtog$")
+@Asteroid_cmd(pattern="vtog$")
 async def vtogif(e):
     a = await e.get_reply_message()
     if not (a and a.media):
@@ -111,7 +105,7 @@ async def vtogif(e):
     dur = a.media.document.attributes[0].duration
     tt = time.time()
     if int(dur) < 120:
-        z = await ultroid_bot.download_media(a.media)
+        z = await Asteroid_bot.download_media(a.media)
         await bash(
             f'ffmpeg -i {z} -vf "fps=10,scale=320:-1:flags=lanczos,split[s0][s1];[s0]palettegen[p];[s1][p]paletteuse" -loop 0 ult.gif -y'
         )
