@@ -19,7 +19,7 @@ import os
 from . import *
 
 
-@ultroid_cmd(pattern="get")
+@Asteroid_cmd(pattern="get")
 async def get_var(event):
     if not event.out and not is_fullsudo(event.sender_id):
         return await eod(event, "`This Command Is Sudo Restricted.`")
