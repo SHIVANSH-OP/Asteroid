@@ -1,9 +1,4 @@
-# Ultroid - UserBot
-# Copyright (C) 2020 TeamUltroid
-#
-# This file is a part of < https://github.com/TeamUltroid/Ultroid/ >
-# PLease read the GNU Affero General Public License in
-# <https://www.github.com/TeamUltroid/Ultroid/blob/main/LICENSE/>.
+
 
 """
 ✘ Commands Available -
@@ -31,7 +26,7 @@ from telethon.tl.types import (
 from . import *
 
 
-@ultroid_cmd(
+@Asteroid_cmd(
     pattern="unbanall$",
     groups_only=True,
 )
@@ -52,7 +47,7 @@ async def _(event):
     await eod(xx, "{title}: {p} unbanned")
 
 
-@ultroid_cmd(
+@Asteroid_cmd(
     pattern="rmusers ?(.*)",
     groups_only=True,
 )
