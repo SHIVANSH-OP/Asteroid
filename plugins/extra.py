@@ -1,9 +1,4 @@
-# Ultroid - UserBot
-# Copyright (C) 2020 TeamUltroid
-#
-# This file is a part of < https://github.com/TeamUltroid/Ultroid/ >
-# PLease read the GNU Affero General Public License in
-# <https://www.github.com/TeamUltroid/Ultroid/blob/main/LICENSE/>.
+
 
 """
 ✘ Commands Available -
@@ -30,7 +25,7 @@ from . import *
 _new_msgs = {}
 
 
-@ultroid_bot.on(
+@Asteroid_bot.on(
     NewMsg(
         outgoing=True,
     ),
@@ -41,7 +36,7 @@ async def newmsg(event):
     _new_msgs[event.chat_id] = event.message
 
 
-@ultroid_cmd(
+@Asteroid_cmd(
     pattern="del$",
 )
 async def delete_it(delme):
@@ -58,7 +53,7 @@ async def delete_it(delme):
             )
 
 
-@ultroid_cmd(
+@Asteroid_cmd(
     pattern="copy$",
 )
 async def copy(e):
@@ -68,13 +63,13 @@ async def copy(e):
             await eor(e, reply.text)
         else:
             await reply.reply(reply)
-            if e.sender_id == ultroid_bot.uid:
+            if e.sender_id == Asteroid_bot.uid:
                 await e.delete()
     else:
         await eod(e, "`Reply To any message`")
 
 
-@ultroid_cmd(
+@Asteroid_cmd(
     pattern="edit",
 )
 async def editer(edit):
@@ -90,7 +85,7 @@ async def editer(edit):
             pass
     else:
         i = 1
-        async for message in ultroid_bot.iter_messages(chat, ultroid_bot.uid):
+        async for message in Asteroid_bot.iter_messages(chat, Asteroid_bot.uid):
             if i == 2:
                 await message.edit(string)
                 await edit.delete()
@@ -98,7 +93,7 @@ async def editer(edit):
             i = i + 1
 
 
-@ultroid_cmd(
+@Asteroid_cmd(
     pattern="reply$",
 )
 async def _(e):
