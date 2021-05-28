@@ -66,7 +66,7 @@ async def lol(ult):
     als = (get_string("alive_1")).format(
         header,
         OWNER_NAME,
-        ultroid_version,
+        Asteroid_version,
         UltVer,
         uptime,
         pyver(),
@@ -194,7 +194,7 @@ async def def_logs(ult):
     await ultroid.send_file(
         ult.chat_id,
         file="Asteroid.log",
-        thumb="resources/extras/ultroid.jpg",
+        thumb="resources/extras/Asteroid.jpg",
         caption=f"**Asteroid Logs.**\nPasted [here]({url}) too!",
     )
     await xx.edit("Done")
