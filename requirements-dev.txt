@@ -3,4 +3,4 @@ black
 isort
 pre-commit
 pyclean
-pylint
+pylint 
