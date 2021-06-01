@@ -60,7 +60,7 @@ API_HASH = input("Please enter your API HASH: ")
 
 # logging in
 try:
-    with TelegramClient(StringSession(), API_ID, API_HASH) as ultroid:
+    with TelegramClient(StringSession(), API_ID, API_HASH) as asteroid:
         print("Generating a user session for Asteroid...")
         ult = Asteroid.send_message(
             "me",
