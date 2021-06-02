@@ -1,6 +1,6 @@
 
 
-FROM teamroyal/asteroid:1.0.0
+FROM teamroyal/asteroid:v0.0.2
 
 ENV TZ=Asia/Kolkata
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
