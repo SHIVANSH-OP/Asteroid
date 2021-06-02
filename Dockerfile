@@ -7,6 +7,7 @@ RUN apt-get autoremove --purge
 RUN git clone https://github.com/TEAMROYAL/Asteroid.git /root/TeamUltroid/
 
 WORKDIR /root/TeamUltroid/
+RUN wget https://raw.githubusercontent.com/TEAMROYAL/Asteroid/master/requirements.txt
 
 RUN pip3 install -r requirements.txt
 RUN npm install -g npm@7.12.1 -g
