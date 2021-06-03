@@ -4,7 +4,6 @@
 <h1 align="center">
   <b>ASTEROID - USERBOT</b>
 </h1>
- THIS LOGO IS MADE BY GULSHAN (https://t.me/D3VILGULSHAN)
 <b>A stable pluggable Telegram userbot based on Telethon.</b>   
 
 
