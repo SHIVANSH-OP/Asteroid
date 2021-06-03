@@ -25,7 +25,7 @@ except ModuleNotFoundError:
 
 
 start_time = time.time()
-ultroid_version = "v0.0.7"
+Asteroid_version = "v0.0.1"
 OWNER_NAME = Asteriod_bot.me.first_name
 OWNER_ID = Asteriod_bot.me.id
 
