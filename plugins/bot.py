@@ -174,7 +174,7 @@ async def heroku_logs(event):
     await Asteroid.send_file(
         event.chat_id,
         file="Asteroid-heroku.log",
-        thumb="resources/extras/ultroid.jpg",
+        thumb="https://telegra.ph/file/381f771c87f28d723b410.png",
         caption=f"**Asteroid Heroku Logs.**\nPasted [here]({url}) too!",
     )
     os.remove("Asteroid-heroku.log")
@@ -194,7 +194,7 @@ async def def_logs(ult):
     await ultroid.send_file(
         ult.chat_id,
         file="Asteroid.log",
-        thumb="resources/extras/Asteroid.jpg",
+        thumb="https://telegra.ph/file/381f771c87f28d723b410.png",
         caption=f"**Asteroid Logs.**\nPasted [here]({url}) too!",
     )
     await xx.edit("Done")
