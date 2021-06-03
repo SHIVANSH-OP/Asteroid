@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://telegra.ph/file/0563ac7032291ed521a54.jpg" alt="TEAMROYAL Logo">
+  <img src="https://telegra.ph/file/3b2b62ec774527518007f.jpg" alt="TEAMROYAL Logo">
 </p>
 <h1 align="center">
   <b>ASTEROID - USERBOT</b>
