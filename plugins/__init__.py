@@ -14,7 +14,7 @@ from PyAsteroid.functions.welcome_db import *
 from PyAsteroid.functions.ytdl import *
 from PyAsteroid.utils import *
 
-from strings import get_string
+#from strings import get_string
 
 try:
     import glitch_me
