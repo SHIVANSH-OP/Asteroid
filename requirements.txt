@@ -1,1 +1,1 @@
-py-Asteroid==2021.5.22
+git+https://github.com/jattpawan/Py-Asteroid.git
